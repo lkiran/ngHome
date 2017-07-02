@@ -3,7 +3,8 @@ import {Http, Response} from "@angular/http";
 import "rxjs/Rx";
 
 @Injectable()
-export class HttpService {
+export class HttpService
+{
 
   constructor(private http: Http) {
 

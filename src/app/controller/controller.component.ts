@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm, FormGroup, FormBuilder} from '@angular/forms';
 import {HttpService} from "./http.service";
+import {FormInitializations}from "app/Initializations"
 
 @Component({
   selector: 'controller',
@@ -15,30 +16,16 @@ export class ControllerComponent implements OnInit {
 
   ngOnInit() {
     this.controllerForm = this._fb.group({
-      Task: this._fb.group({
-        Properties: this._fb.array([]),
-        FunctionId: [''],
-        DeviceId: ['']
-      })
-    })
+      Task: FormInitializations.InitTaskGroup(this._fb),
+      Condition: FormInitializations.InitConditionGroup(this._fb)
+    });
+
+    console.log("controllerForm",this.controllerForm);
   }
 
   save(form:NgForm) {
     console.log(form.value);
   }
 
-  initPropertySelector() {
-    return this._fb.group({
-      Id: [''],
-      DeviceId: [''],
-      FunctionId: [''],
-    });
-  }
 
-  initPropertyGroup() {
-    return this._fb.group({
-      Id: [''],
-      Value: [''],
-    });
-  }
 }

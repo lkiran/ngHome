@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HttpService} from "../http.service";
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {DeviceModel} from "../../Models/DeviceModel";
 import {FunctionModel} from "../../Models/FunctionModel";
 import {PropertyModel} from "../../Models/PropertyModel";
@@ -9,35 +9,29 @@ import {PropertyModel} from "../../Models/PropertyModel";
   selector: 'property-selector',
   templateUrl: 'property-selector.component.html',
 })
-export class PropertySelectorComponent implements OnInit {
+export class PropertySelectorComponent implements OnInit
+{
   Devices: DeviceModel[] = [];
   @Input() Device: DeviceModel = null;
   @Input() Function: FunctionModel = null;
-  @Input('group') public propertySelectorForm: FormGroup;
+  @Input('property') public propertyGroupControl: FormGroup;
 
   constructor(private httpService: HttpService) {
   }
 
   ngOnInit() {
+    console.log("propertyGroupControl",this.propertyGroupControl);
     this.httpService.getDevices()
       .subscribe(
         (data: DeviceModel[]) => {
           this.Devices = data;
         }
       );
-    this.propertySelectorForm.get('DeviceId').valueChanges.subscribe(
-      value => {
-        this.Function=null;
-        this.populateFunctions(value);
-      }
-    );
-
-    this.propertySelectorForm.get('FunctionId').valueChanges.subscribe(
-      value => this.populateProperties(value)
-    );
   }
 
   populateFunctions(deviceId: string) {
+    this.Function = null;
+
     if (deviceId == null || deviceId == "")
       this.Function = null;
 

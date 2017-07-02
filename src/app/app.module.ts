@@ -8,6 +8,7 @@ import {TaskComponent} from "./controller/task/task.component";
 import {ControllerComponent} from './controller/controller.component';
 import {PropertyEditorComponent} from "./controller/property-editor/property-editor.component";
 import {PropertySelectorComponent} from './controller/property-selector/property-selector.component';
+import { ConditionComponent } from './controller/condition/condition.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {PropertySelectorComponent} from './controller/property-selector/property
     PropertySelectorComponent,
     PropertyEditorComponent,
     ControllerComponent,
-    TaskComponent
+    TaskComponent,
+    ConditionComponent
   ],
   imports: [
     BrowserModule,

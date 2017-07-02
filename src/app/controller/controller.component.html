@@ -1,8 +1,10 @@
 <div class="row">
-  <form (ngSubmit)="save(controllerForm)" [formGroup]="controllerForm">
-    <task [group]="controllerForm.controls.Task"></task>
+  <form class="form-horizontal" (ngSubmit)="save(controllerForm)" [formGroup]="controllerForm">
 
-    <button type="submit" value="submit">Submit</button>
+    <controller-task [task]="controllerForm.controls.Task" class="row"></controller-task>
+    <controller-condition [condition]="controllerForm.controls.Condition" class="row"></controller-condition>
+
+    <button type="submit" class="btn btn-info">Kaydet</button>
   </form>
 </div>
 

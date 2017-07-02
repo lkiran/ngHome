@@ -65,7 +65,7 @@ export class PropertyEditorComponent implements OnInit {
       .subscribe(
         (data: PropertyModel[]) => {
           this.Function.Properties = data;
-          var propArray: FormGroup[] = [];
+
           for (let p of data) {
             this.Properties.push(this.initPropertyGroup(p))
           }

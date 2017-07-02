@@ -1,0 +1,20 @@
+<div class="form-group" [formGroup]="conditionComponent">
+  <label>Koşul</label>
+  <property-selector [property]="conditionComponent.controls.Property"></property-selector>
+
+  <div class="col-md-3">
+    <select class="form-control" formControlName="Operator">
+      <option value="" disabled selected>Seçiniz...</option>
+      <option value="{{comparerEnum.Equal}}">Eşit (=)</option>
+      <option value="{{comparerEnum.NotEqual}}">Eşit değil (≠)</option>
+      <option value="{{comparerEnum.Greather}}">Büyük (>)</option>
+      <option value="{{comparerEnum.EqualOrSmaller}}">Eşit veya büyük (<)</option>
+      <option value="{{comparerEnum.Smaller}}">Küçük (<)</option>
+      <option value="{{comparerEnum.EqualOrGreather}}">Eşit veya küçük (<)</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <input class="form-control" type="text" formControlName="Value"/>
+  </div>
+</div>
