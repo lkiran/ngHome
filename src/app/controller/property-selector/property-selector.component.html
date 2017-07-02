@@ -1,0 +1,21 @@
+<div [formGroup]="propertySelectorForm">
+  <div class="col-lg-3">
+    <select class="form-control" formControlName="DeviceId">
+      <option value="" disabled selected>--- Aygıt seçiniz ---</option>
+      <option *ngFor="let d of Devices" [value]="d.Id">{{d.Name}}</option>
+    </select>
+  </div>
+
+  <div class="col-lg-3" *ngIf="Device != null">
+    <select class="form-control" formControlName="FunctionId">
+      <option value="" disabled selected>--- Fonksiyon seçiniz ---</option>
+      <option *ngFor="let f of Device.Functions" [value]="f.Id">{{f.Name}}</option>
+    </select>
+  </div>
+
+  <div class="col-lg-3" *ngIf="Function != null">
+    <select class="form-control" formControlName="Id">
+      <option *ngFor="let p of Function.Properties" [value]="p.Id">{{p.Name}}</option>
+    </select>
+  </div>
+</div>

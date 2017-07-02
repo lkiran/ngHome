@@ -1,16 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {HttpModule} from "@angular/http";
+import {AppComponent} from './app.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {TaskComponent} from "./controller/task/task.component";
+import {ControllerComponent} from './controller/controller.component';
+import {PropertyEditorComponent} from "./controller/property-editor/property-editor.component";
+import {PropertySelectorComponent} from './controller/property-selector/property-selector.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PropertySelectorComponent,
+    PropertyEditorComponent,
+    ControllerComponent,
+    TaskComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

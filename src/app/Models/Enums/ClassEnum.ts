@@ -1,0 +1,5 @@
+enum ClassEnum
+{
+  Integer,
+  String
+}
