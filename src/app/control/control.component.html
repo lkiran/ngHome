@@ -1,0 +1,28 @@
+<p class="lead">{{Control.Name}}</p>
+
+<form class="form-horizontal" (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+
+  <div formArrayName="Tasks" *ngFor="let task of Control.Tasks; let i=index">
+    <control-task
+      [formGroupName]="i"
+      [taskGroup]="TaskArray.controls[i]"
+      [task]="task"
+      class="row">
+    </control-task>
+  </div>
+
+  <div class="form-group" formArrayName="Conditions" *ngFor="let condition of Control.Conditions; let i=index">
+    <control-condition
+      [formGroupName]="i"
+      [conditionGroup]="ConditionArray.controls[i]"
+      [condition]="condition"
+      class="row">
+    </control-condition>
+  </div>
+
+  <button type="submit" class="btn btn-info">Kaydet</button>
+</form>
+
+
+{{controlForm.value | json}}
+

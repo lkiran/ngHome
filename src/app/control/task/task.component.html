@@ -1,0 +1,14 @@
+<div class="form-group" [formGroup]="taskGroup">
+
+  <input type="hidden" formControlName="Id">
+
+
+    <button class="btn btn-default col-md-6">{{PropertyInfo.DeviceName}} > {{PropertyInfo.FunctionName}} >
+      {{PropertyInfo.Name}}
+    </button>
+
+  <div class="col-lg-6">
+    <input class="form-control" type="text" id="{{Task.Id}}" formControlName="Value">
+  </div>
+
+</div>

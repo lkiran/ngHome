@@ -1,0 +1,15 @@
+<div [formGroup]="propertyEditorGroup">
+
+  <div class="col-lg-3">
+
+    <div class="form-group">
+
+      <label for="{{Property.Id}}">{{Property.Name}}</label>
+
+      <input type="hidden" id="Id" value="{{Property.Id}}" formControlName="Id">
+
+      <input class="form-control" type="text" value="{{Property.Value}}" id="{{Property.Id}}" formControlName="Value">
+
+    </div>
+  </div>
+</div>

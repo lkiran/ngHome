@@ -1,0 +1,56 @@
+<div [formGroup]="conditionGroup">
+
+  <input type="hidden" formControlName="Id">
+
+  <button class="btn btn-default col-md-4">{{PropertyInfo.DeviceName}} > {{PropertyInfo.FunctionName}} >
+    {{PropertyInfo.Name}}
+  </button>
+
+  <div class="col-md-4">
+    <select class="form-control" formControlName="Operator">
+      <option value="" disabled selected>Seçiniz...</option>
+      <option value="{{comparerEnum.Equal}}" [attr.selected]="Condition.Operator==comparerEnum.Equal">Eşit (=)
+      </option>
+      <option value="{{comparerEnum.NotEqual}}" [attr.selected]="Condition.Operator==comparerEnum.NotEqual">
+        Eşit değil (≠)
+      </option>
+
+      <option value="{{comparerEnum.Greather}}" [attr.selected]="Condition.Operator==comparerEnum.Greather">
+        Büyük (>)
+      </option>
+
+      <option value="{{comparerEnum.EqualOrSmaller}}"
+              [attr.selected]="Condition.Operator==comparerEnum.EqualOrSmaller">
+        Eşit veya büyük (≥)
+      </option>
+
+      <option value="{{comparerEnum.Smaller}}" [attr.selected]="Condition.Operator==comparerEnum.Smaller">
+        Küçük (<)
+      </option>
+
+      <option value="{{comparerEnum.EqualOrGreather}}"
+              [attr.selected]="Condition.Operator==comparerEnum.EqualOrGreather">
+        Eşit veya küçük (≤)
+      </option>
+
+    </select>
+
+  </div>
+
+  <div class="col-md-4">
+    <input class="form-control" type="text" formControlName="Value"/>
+  </div>
+
+  <div *ngIf="Condition.AndConditions.length > 0">
+    <div class="col-md-12"
+         formArrayName="AndConditions"
+         *ngFor="let condition of Condition.AndConditions; let i=index">
+      <control-condition
+        [formGroupName]="i"
+        [conditionGroup]="AndConditionArray.controls[i]"
+        [condition]="condition"
+        class="row">
+      </control-condition>
+    </div>
+  </div>
+</div>

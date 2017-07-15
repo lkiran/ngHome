@@ -1,14 +1,16 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {HttpService} from "../http.service";
+import {HttpService} from "../../../Services/http.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {DeviceModel} from "../../Models/DeviceModel";
-import {FunctionModel} from "../../Models/FunctionModel";
-import {PropertyModel} from "../../Models/PropertyModel";
+import {DeviceModel} from "../../../Models/DeviceModel";
+import {FunctionModel} from "../../../Models/FunctionModel";
+import {PropertyModel} from "../../../Models/PropertyModel";
 
-@Component({
-  selector: 'property-selector',
-  templateUrl: 'property-selector.component.html',
-})
+@Component(
+  {
+    selector: 'property-selector',
+    templateUrl: 'property-selector.component.html',
+  }
+)
 export class PropertySelectorComponent implements OnInit
 {
   Devices: DeviceModel[] = [];
@@ -20,7 +22,6 @@ export class PropertySelectorComponent implements OnInit
   }
 
   ngOnInit() {
-    console.log("propertyGroupControl",this.propertyGroupControl);
     this.httpService.getDevices()
       .subscribe(
         (data: DeviceModel[]) => {

@@ -1,3 +1,9 @@
 <div class="container">
-  <controller></controller>
+  <div class="row">
+    <div *ngFor="let c of Controls">
+      <control [Control]="c"></control>
+    </div>
+  </div>
 </div>
+
+

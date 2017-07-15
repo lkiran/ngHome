@@ -4,29 +4,32 @@ import {NgModule} from '@angular/core';
 import {HttpModule} from "@angular/http";
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {TaskComponent} from "./controller/task/task.component";
-import {ControllerComponent} from './controller/controller.component';
-import {PropertyEditorComponent} from "./controller/property-editor/property-editor.component";
-import {PropertySelectorComponent} from './controller/property-selector/property-selector.component';
-import { ConditionComponent } from './controller/condition/condition.component';
+import {TaskComponent} from "./control/task/task.component";
+import {ControlComponent} from './control/control.component';
+import {PropertyEditorComponent} from "./control/property-editor/property-editor.component";
+import {PropertySelectorComponent} from './control/property-selector/property-selector.component';
+import {ConditionComponent} from './control/condition/condition.component';
+import {HttpService} from "../Services/http.service";
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    PropertySelectorComponent,
-    PropertyEditorComponent,
-    ControllerComponent,
-    TaskComponent,
-    ConditionComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    ReactiveFormsModule,
-  ],
+@NgModule(
+  {
+    declarations: [
+      AppComponent,
+      PropertySelectorComponent,
+      PropertyEditorComponent,
+      ControlComponent,
+      TaskComponent,
+      ConditionComponent
+    ],
+    imports: [
+      BrowserModule,
+      HttpModule,
+      ReactiveFormsModule,
+    ],
 
-  providers: [],
-  bootstrap: [AppComponent]
-})
+    providers: [HttpService],
+    bootstrap: [AppComponent]
+  }
+)
 export class AppModule {
 }
