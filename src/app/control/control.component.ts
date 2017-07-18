@@ -48,6 +48,7 @@ export class ControlComponent implements OnInit {
             this._fb.group(
               {
                 Id: condition.Id,
+                PropertyId: condition.PropertyId,
                 Value: condition.Value,
                 Operator: condition.Operator,
                 AndConditions: this._fb.array([])

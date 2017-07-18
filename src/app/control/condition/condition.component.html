@@ -1,12 +1,10 @@
-<div [formGroup]="conditionGroup">
+<div [formGroup]="conditionGroup" class="">
 
   <input type="hidden" formControlName="Id">
 
-  <button class="btn btn-default col-md-4">{{PropertyInfo.DeviceName}} > {{PropertyInfo.FunctionName}} >
-    {{PropertyInfo.Name}}
-  </button>
+  <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"></property-selector>
 
-  <div class="col-md-4">
+  <div class="form-group">
     <select class="form-control" formControlName="Operator">
       <option value="" disabled selected>Seçiniz...</option>
       <option value="{{comparerEnum.Equal}}" [attr.selected]="Condition.Operator==comparerEnum.Equal">Eşit (=)
@@ -37,7 +35,7 @@
 
   </div>
 
-  <div class="col-md-4">
+  <div class="form-group">
     <input class="form-control" type="text" formControlName="Value"/>
   </div>
 

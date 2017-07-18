@@ -3,7 +3,7 @@ import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
 import {Enums} from "../../Enums";
 import {ConditionModel} from "../../../Models/ConditionModel";
 import {HttpService} from "../../../Services/http.service";
-import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
+import {PropertyInfoModel} from "../../../Models/PropertyInfoModel"
 
 @Component(
   {
@@ -32,6 +32,7 @@ export class ConditionComponent implements OnInit
         this._fb.group(
           {
             Id: andCondition.Id,
+            PropertyId: andCondition.PropertyId,
             Value: andCondition.Value,
             Operator: andCondition.Operator,
             AndConditions: this._fb.array([])

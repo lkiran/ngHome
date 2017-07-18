@@ -1,21 +1,22 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {HttpModule} from "@angular/http";
 import {AppComponent} from './app.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {TaskComponent} from "./control/task/task.component";
 import {ControlComponent} from './control/control.component';
 import {PropertyEditorComponent} from "./control/property-editor/property-editor.component";
-import {PropertySelectorComponent} from './control/property-selector/property-selector.component';
+import {PropertySelectorControl} from './control/property-selector/property-selector.component';
 import {ConditionComponent} from './control/condition/condition.component';
 import {HttpService} from "../Services/http.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule(
   {
     declarations: [
+
       AppComponent,
-      PropertySelectorComponent,
+      PropertySelectorControl,
       PropertyEditorComponent,
       ControlComponent,
       TaskComponent,
@@ -23,8 +24,10 @@ import {HttpService} from "../Services/http.service";
     ],
     imports: [
       BrowserModule,
+      FormsModule,
       HttpModule,
       ReactiveFormsModule,
+      NgbModule.forRoot()
     ],
 
     providers: [HttpService],

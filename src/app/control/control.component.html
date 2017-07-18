@@ -1,6 +1,6 @@
 <p class="lead">{{Control.Name}}</p>
 
-<form class="form-horizontal" (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+<form class="" (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
 
   <div formArrayName="Tasks" *ngFor="let task of Control.Tasks; let i=index">
     <control-task

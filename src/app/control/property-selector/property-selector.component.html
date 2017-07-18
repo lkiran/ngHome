@@ -1,21 +1,38 @@
-<div [formGroup]="propertyGroupControl">
-  <div class="col-lg-3">
-    <select class="form-control" (change)="populateFunctions($event.target.value)">
-      <option value="" disabled selected>--- Aygıt seçiniz ---</option>
-      <option *ngFor="let d of Devices" [value]="d.Id">{{d.Name}}</option>
-    </select>
+<button class="btn btn-default" style="margin-bottom: 16px" (click)="open(content)">
+  {{Prop.DeviceName}} > {{Prop.FunctionName}} > {{Prop.Name}}
+</button>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+
+    <div class="form-group" *ngIf="Prop!=null">
+      <select class="form-control" [(ngModel)]="Prop.DeviceId"
+              (change)="populateFunctions($event.target.value)">
+        <option value="" disabled selected>--- Aygıt seçiniz ---</option>
+        <option *ngFor="let d of Devices" [value]="d.Id" [attr.selected]="Prop.DeviceId==d.Id">
+          {{d.Name}}
+        </option>
+      </select>
+    </div>
+
+    <div class=" form-group
+        " *ngIf="Device != null">
+      <select class="form-control" (change)="populateProperties($event.target.value)">
+        <option value="" disabled selected>--- Fonksiyon seçiniz ---</option>
+        <option *ngFor="let f of Device.Functions" [value]="f.Id" [attr.selected]="Prop.FunctionId==f.Id">
+          {{f.Name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group" *ngIf="Function != null">
+      <select class="form-control">
+        <option *ngFor="let p of Function.Properties" [value]="p.Id">{{p.Name}}</option>
+      </select>
+    </div>
   </div>
 
-  <div class="col-lg-3" *ngIf="Device != null">
-    <select class="form-control" (change)="populateProperties($event.target.value)">
-      <option value="" disabled selected>--- Fonksiyon seçiniz ---</option>
-      <option *ngFor="let f of Device.Functions" [value]="f.Id">{{f.Name}}</option>
-    </select>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">İptal</button>
+    <button type="button" class="btn btn-info" (click)="Apply()">Seç</button>
   </div>
-
-  <div class="col-lg-3" *ngIf="Function != null">
-    <select class="form-control" formControlName="Id">
-      <option *ngFor="let p of Function.Properties" [value]="p.Id">{{p.Name}}</option>
-    </select>
-  </div>
-</div>
+</ng-template>

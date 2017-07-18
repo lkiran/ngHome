@@ -1,9 +1,10 @@
 import {PropertyModel} from "./PropertyModel";
 
-export class FunctionModel{
+export class FunctionModel {
   constructor(
-    public Id:string,
-    public Name:string,
-    public Properties:PropertyModel[]
-  ){}
+    public Id: string = "",
+    public Name: string = "",
+    public Properties: PropertyModel[] = []
+  ) {
+  }
 }
