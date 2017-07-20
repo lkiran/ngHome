@@ -6,28 +6,25 @@
 
   <div class="form-group">
     <select class="form-control" formControlName="Operator">
-      <option value="" disabled selected>Seçiniz...</option>
-      <option value="{{comparerEnum.Equal}}" [attr.selected]="Condition.Operator==comparerEnum.Equal">Eşit (=)
+      <option [value]="comparerEnum.Equal">Eşit (=)
       </option>
-      <option value="{{comparerEnum.NotEqual}}" [attr.selected]="Condition.Operator==comparerEnum.NotEqual">
+      <option [value]="comparerEnum.NotEqual">
         Eşit değil (≠)
       </option>
 
-      <option value="{{comparerEnum.Greather}}" [attr.selected]="Condition.Operator==comparerEnum.Greather">
+      <option [value]="comparerEnum.Greather">
         Büyük (>)
       </option>
 
-      <option value="{{comparerEnum.EqualOrSmaller}}"
-              [attr.selected]="Condition.Operator==comparerEnum.EqualOrSmaller">
+      <option [value]="comparerEnum.EqualOrSmaller">
         Eşit veya büyük (≥)
       </option>
 
-      <option value="{{comparerEnum.Smaller}}" [attr.selected]="Condition.Operator==comparerEnum.Smaller">
+      <option [value]="comparerEnum.Smaller">
         Küçük (<)
       </option>
 
-      <option value="{{comparerEnum.EqualOrGreather}}"
-              [attr.selected]="Condition.Operator==comparerEnum.EqualOrGreather">
+      <option [value]="comparerEnum.EqualOrGreather">
         Eşit veya küçük (≤)
       </option>
 

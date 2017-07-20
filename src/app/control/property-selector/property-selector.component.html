@@ -1,14 +1,14 @@
-<button class="btn btn-default" style="margin-bottom: 16px" (click)="open(content)">
+<button class="btn btn-default" style="margin-bottom: 16px" (click)="Open(content)">
   {{Prop.DeviceName}} > {{Prop.FunctionName}} > {{Prop.Name}}
 </button>
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-body">
 
-    <div class="form-group" *ngIf="Prop!=null">
-      <select class="form-control" [(ngModel)]="Prop.DeviceId"
+    <div class="form-group">
+      <select class="form-control" [ngModel]="Prop.DeviceId"
               (change)="populateFunctions($event.target.value)">
-        <option value="" disabled selected>--- Aygıt seçiniz ---</option>
-        <option *ngFor="let d of Devices" [value]="d.Id" [attr.selected]="Prop.DeviceId==d.Id">
+        <option value="" disabled selected *ngIf="Prop.DeviceId==''">--- Aygıt seçiniz ---</option>
+        <option *ngFor="let d of Devices" [value]="d.Id">
           {{d.Name}}
         </option>
       </select>
@@ -16,16 +16,17 @@
 
     <div class=" form-group
         " *ngIf="Device != null">
-      <select class="form-control" (change)="populateProperties($event.target.value)">
+      <select class="form-control" [ngModel]="Prop.FunctionId"
+              (change)="populateProperties($event.target.value)">
         <option value="" disabled selected>--- Fonksiyon seçiniz ---</option>
-        <option *ngFor="let f of Device.Functions" [value]="f.Id" [attr.selected]="Prop.FunctionId==f.Id">
+        <option *ngFor="let f of Device.Functions" [value]="f.Id">
           {{f.Name}}
         </option>
       </select>
     </div>
 
     <div class="form-group" *ngIf="Function != null">
-      <select class="form-control">
+      <select class="form-control" [ngModel]="Prop.Id">
         <option *ngFor="let p of Function.Properties" [value]="p.Id">{{p.Name}}</option>
       </select>
     </div>

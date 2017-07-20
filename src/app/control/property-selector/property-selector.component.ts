@@ -27,13 +27,12 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   Function: FunctionModel = null;
   propagateChange: any = () => {
   };
-  @Input("property") public Prop: PropertyInfoModel = new PropertyInfoModel;
+  @Input("property") public Prop: PropertyInfoModel;
 
   constructor(private modalService: NgbModal, private httpService: HttpService) {
   }
 
-  writeValue(obj: any): void {
-    console.log("writeValue", obj);
+  writeValue(PropertId: string): void {
 
   }
 
@@ -44,16 +43,9 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   }
 
   ngOnInit() {
-    console.log(this.Prop);
-    this.httpService.getDevices()
-      .subscribe(
-        (data: DeviceModel[]) => {
-          this.Devices = data;
-        }
-      );
   }
 
-  open(content) {
+  Open(content) {
     this.modalService.open(content).result.then(
       (result) => {
         // console.log("result", result);
@@ -62,6 +54,14 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
         // console.log("reason", reason);
       }
     );
+    this.httpService.getDevices()
+      .subscribe(
+        (data: DeviceModel[]) => {
+          this.Devices = data;
+          this.populateFunctions(this.Prop.DeviceId);
+        }
+      );
+    console.log("Device ", this.Device);
   }
 
   Apply() {
@@ -69,20 +69,19 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   }
 
   populateFunctions(deviceId: string) {
-    this.Function = null;
-
     if (deviceId == null || deviceId == "")
       this.Function = null;
 
     this.Device = this.Devices.filter(d => d.Id === deviceId)[0];
 
-    if (this.Device.Functions != null)
+    if (this.Device == null || this.Device.Functions != null)
       return;
 
     this.httpService.getFunctions(deviceId)
       .subscribe(
         (data: FunctionModel[]) => {
           this.Device.Functions = data;
+          this.populateProperties(this.Prop.FunctionId);
         }
       );
   }
