@@ -1,6 +1,6 @@
 <p class="lead">{{Control.Name}}</p>
 
-<form class="" (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+<form (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
 
   <div formArrayName="Tasks" *ngFor="let task of Control.Tasks; let i=index">
     <control-task
@@ -10,6 +10,7 @@
       class="row">
     </control-task>
   </div>
+  <button class="btn btn-info" (click)="AddNewTask()">Görev Ekle</button>
 
   <div class="form-group" formArrayName="Conditions" *ngFor="let condition of Control.Conditions; let i=index">
     <control-condition

@@ -1,10 +1,10 @@
-import {Component, OnInit, Input, forwardRef, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, forwardRef} from '@angular/core';
 import {HttpService} from "../../../Services/http.service";
-import {FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {DeviceModel} from "../../../Models/DeviceModel";
 import {FunctionModel} from "../../../Models/FunctionModel";
 import {PropertyModel} from "../../../Models/PropertyModel";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbModalRef, NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -25,34 +25,35 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   Devices: DeviceModel[] = [];
   Device: DeviceModel = null;
   Function: FunctionModel = null;
-  propagateChange: any = () => {
+  onChange: any = () => {
   };
   @Input("property") public Prop: PropertyInfoModel;
 
   constructor(private modalService: NgbModal, private httpService: HttpService) {
   }
 
-  writeValue(PropertId: string): void {
-
-  }
+  writeValue(PropertyId: string): void { }
 
   registerOnChange(fn: any): void {
+    this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   Open(content) {
     this.modalService.open(content).result.then(
       (result) => {
-        // console.log("result", result);
+        this.httpService.getPropertyInfo(this.Prop.Id)
+          .subscribe(
+            (data: PropertyInfoModel) => {
+              this.Prop = data;
+              this.onChange(data.Id);
+            }
+          );
       },
-      (reason) => {
-        // console.log("reason", reason);
-      }
+      (reason) => { }
     );
     this.httpService.getDevices()
       .subscribe(
@@ -61,11 +62,6 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
           this.populateFunctions(this.Prop.DeviceId);
         }
       );
-    console.log("Device ", this.Device);
-  }
-
-  Apply() {
-    this.propagateChange(this.Prop.Id);
   }
 
   populateFunctions(deviceId: string) {
@@ -89,7 +85,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   populateProperties(functionId: string) {
     this.Function = this.Device.Functions.filter(f => f.Id === functionId)[0];
 
-    if (this.Function.Properties != null)
+    if (this.Function==null || this.Function.Properties != null)
       return;
 
     this.httpService.getProperties(functionId)

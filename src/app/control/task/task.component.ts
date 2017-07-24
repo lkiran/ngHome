@@ -16,8 +16,8 @@ import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
 export class TaskComponent implements OnInit {
 
   @Input('task') public Task: TaskModel;
-  @Input('taskGroup')public taskGroup: FormGroup;
-  public PropertyInfo: PropertyInfoModel = new  PropertyInfoModel;
+  @Input('taskGroup') public taskGroup: FormGroup;
+  public PropertyInfo: PropertyInfoModel = new PropertyInfoModel;
 
   constructor(private httpService: HttpService, private _fb: FormBuilder) {
     if (this.PropertyInfo == null)
@@ -25,6 +25,8 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.Task.PropertyId == "") return;
+
     this.httpService.getPropertyInfo(this.Task.PropertyId).subscribe(
       (data: PropertyInfoModel) => {
         this.PropertyInfo = data;

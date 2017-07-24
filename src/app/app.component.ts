@@ -18,9 +18,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.httpService.getControls()
       .subscribe(
-        (data: ControlModel[] ) => {
+        (data: ControlModel[]) => {
           this.Controls = data;
         }
       );
+  }
+
+  AddNewControl() {
+    this.Controls.push(new ControlModel);
   }
 }

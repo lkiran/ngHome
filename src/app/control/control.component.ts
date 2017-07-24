@@ -35,7 +35,15 @@ export class ControlComponent implements OnInit {
         this.Control.Tasks = data;
 
         for (let task of this.Control.Tasks)
-          this.TaskArray.push(this._fb.group({Id: task.Id, Value: task.Value}));
+          this.TaskArray.push(
+            this._fb.group(
+              {
+                Id: task.Id,
+                Value: task.Value,
+                PropertyId: task.PropertyId
+              }
+            )
+          );
       }
     );
 
@@ -67,6 +75,19 @@ export class ControlComponent implements OnInit {
       }
     );
 
+  }
+
+  AddNewTask() {
+    this.TaskArray.push(
+      this._fb.group(
+        {
+          Id: "",
+          Value: "",
+          PropertyId: ""
+        }
+      )
+    );
+    this.Control.Tasks.push(new TaskModel);
   }
 
   save(form: NgForm) {

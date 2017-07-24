@@ -1,6 +1,8 @@
 <button class="btn btn-default" style="margin-bottom: 16px" (click)="Open(content)">
-  {{Prop.DeviceName}} > {{Prop.FunctionName}} > {{Prop.Name}}
+  <span *ngIf="Prop.Id==''; else:elseBlock">Özellik Seç</span>
+  <ng-template #elseBlock>{{Prop.DeviceName}} > {{Prop.FunctionName}} > {{Prop.Name}}</ng-template>
 </button>
+
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-body">
 
@@ -18,7 +20,7 @@
         " *ngIf="Device != null">
       <select class="form-control" [ngModel]="Prop.FunctionId"
               (change)="populateProperties($event.target.value)">
-        <option value="" disabled selected>--- Fonksiyon seçiniz ---</option>
+        <option value="" disabled selected *ngIf="Prop.FunctionId==''">--- Fonksiyon seçiniz ---</option>
         <option *ngFor="let f of Device.Functions" [value]="f.Id">
           {{f.Name}}
         </option>
@@ -26,14 +28,15 @@
     </div>
 
     <div class="form-group" *ngIf="Function != null">
-      <select class="form-control" [ngModel]="Prop.Id">
+      <select class="form-control" [(ngModel)]="Prop.Id">
+        <option value="" disabled selected *ngIf="Prop.Id==''">--- Özellik seçiniz ---</option>
         <option *ngFor="let p of Function.Properties" [value]="p.Id">{{p.Name}}</option>
       </select>
     </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">İptal</button>
-    <button type="button" class="btn btn-info" (click)="Apply()">Seç</button>
+    <button type="button" class="btn btn-secondary" (click)="d()">İptal</button>
+    <button type="button" class="btn btn-info" (click)="c(content)">Seç</button>
   </div>
 </ng-template>
