@@ -1,4 +1,4 @@
-<div [formGroup]="conditionGroup" class="">
+<div class="mb-2" [formGroup]="conditionGroup">
 
   <input type="hidden" formControlName="Id">
 
@@ -6,6 +6,7 @@
 
   <div class="form-group">
     <select class="form-control" formControlName="Operator">
+      <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
       <option [value]="comparerEnum.Equal">Eşit (=)
       </option>
       <option [value]="comparerEnum.NotEqual">
@@ -33,19 +34,26 @@
   </div>
 
   <div class="form-group">
-    <input class="form-control" type="text" formControlName="Value"/>
+    <input class="form-control" type="text" formControlName="Value" placeholder="Değer Giriniz"/>
   </div>
 
-  <div *ngIf="Condition.AndConditions.length > 0">
-    <div class="col-md-12"
-         formArrayName="AndConditions"
-         *ngFor="let condition of Condition.AndConditions; let i=index">
-      <control-condition
-        [formGroupName]="i"
-        [conditionGroup]="AndConditionArray.controls[i]"
-        [condition]="condition"
-        class="row">
-      </control-condition>
+  <div *ngIf="Condition.AndConditions.length > 0; elseTemplate">
+    <span>Bağlı Koşullar</span>
+    <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
+
+    <div class="pl-3 pt-2 left-guide">
+      <div
+        formArrayName="AndConditions"
+        *ngFor="let condition of Condition.AndConditions; let i=index">
+        <control-condition
+          [formGroupName]="i"
+          [conditionGroup]="AndConditionArray.controls[i]"
+          [condition]="condition">
+        </control-condition>
+      </div>
     </div>
+  </div>
+  <div #elseTemplate>
+    <a class="text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Bağlı Koşul Ekle</a>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row" *ngFor="let c of Controls">
-    <control [Control]="c"></control>
+    <div class="col-md-6">
+      <control [Control]="c"></control>
+    </div>
   </div>
 
   <a class="btn btn-info" (click)="AddNewControl()">Kontrol Ekle</a>

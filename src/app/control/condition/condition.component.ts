@@ -59,4 +59,18 @@ export class ConditionComponent implements OnInit
       this.populateAndConditions()
   }
 
+  AddAndCondition() {
+    this.AndConditionArray.push(
+      this._fb.group(
+        {
+          Id: "",
+          PropertyId: "",
+          Value: "",
+          Operator: "",
+          AndConditions: this._fb.array([])
+        }
+      )
+    );
+    this.Condition.AndConditions.push(new ConditionModel);
+  }
 }

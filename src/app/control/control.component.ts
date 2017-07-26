@@ -90,6 +90,21 @@ export class ControlComponent implements OnInit {
     this.Control.Tasks.push(new TaskModel);
   }
 
+  AddNewCondition(){
+    this.ConditionArray.push(
+      this._fb.group(
+        {
+          Id: "",
+          PropertyId: "",
+          Value: "",
+          Operator:"",
+          AndConditions: this._fb.array([])
+        }
+      )
+    );
+    this.Control.Conditions.push(new ConditionModel);
+  }
+
   save(form: NgForm) {
     console.log(form.value);
   }

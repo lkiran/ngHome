@@ -1,13 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-size: 0.8em;
+}
+button, a, .form-control:hover{
+  cursor: pointer;
+}
 
-.form-control{
+.lead{
+  font-size: 1.4em;
+  font-weight: 400;
+}
+.btn:not(.btn-link) {
+  font-size: 1em;
+  border-bottom: 2px solid;
+  border-radius: 2px;
+  padding: 6px 8px 6px;
+}
+
+.btn-default, .btn-secondary{
+  border-bottom-color: rgb(190, 190, 190) !important;
+}
+.btn-info {
+  border-bottom-color: rgb(79, 154, 177) !important;
+}
+
+.form-control {
+  font-size: 1em;
+  line-height: 2em;
   border-top: none;
-  border-bottom: 2px solid rgba(0,0,0,0.16);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.16);
   border-left: none;
   border-right: none;
   border-radius: 0px;
   padding: 0px 5px 0px;
+  width: auto !important;
 }
-.card-header{
 
+.left-guide {
+  border-left: 2px solid rgba(0, 0, 0, 0.16)
+}
+
+.bottom-guide {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16)
 }
