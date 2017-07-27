@@ -2,38 +2,68 @@
 body {
   font-size: 0.8em;
 }
-button, a, .form-control:hover{
+
+button, a, .form-control:hover {
   cursor: pointer;
 }
 
-.lead{
+.container {
+  padding: 20px;
+}
+
+.lead {
   font-size: 1.4em;
   font-weight: 400;
 }
-.btn:not(.btn-link) {
+
+.btn {
   font-size: 1em;
-  border-bottom: 2px solid;
+  border-bottom: 3px solid;
   border-radius: 2px;
+  margin-bottom: 3px !important;
   padding: 6px 8px 6px;
 }
 
-.btn-default, .btn-secondary{
-  border-bottom-color: rgb(190, 190, 190) !important;
-}
-.btn-info {
-  border-bottom-color: rgb(79, 154, 177) !important;
+.btn-lg {
+  font-size: 1.2em !important;
+  border-radius: 2px !important;
+  padding: 10px 14px 10px !important;
 }
 
-.form-control {
+.btn-default, .btn-secondary {
+  border-bottom-color: rgb(190, 190, 190) !important;
+}
+.btn-default:hover, .btn-secondary:hover {
+  background: rgb(190, 190, 190) !important;
+  border-bottom-color: rgb(190, 190, 190) !important;
+}
+.btn-info, .btn-outline-info {
+  border-bottom-color: #31b0d5 !important;
+}
+
+.col-md-6 {
+  padding: 15px;
+}
+
+input.form-control.header {
+  background: transparent !important;
+  border: rgba(0, 0, 0, 0) !important;
+  font-size: 1.5em;
+}
+
+input.form-control.header:focus {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+input.form-control, select.form-control {
   font-size: 1em;
-  line-height: 2em;
-  border-top: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.16);
-  border-left: none;
-  border-right: none;
-  border-radius: 0px;
-  padding: 0px 5px 0px;
-  width: auto !important;
+  line-height: 1.6em !important;
+  border-top: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.16) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  padding: 12px 8px 0 8px !important;
 }
 
 .left-guide {
@@ -42,4 +72,9 @@ button, a, .form-control:hover{
 
 .bottom-guide {
   border-bottom: 1px solid rgba(0, 0, 0, 0.16)
+}
+
+.badge {
+  margin-left: 5px;
+  vertical-align: super;
 }

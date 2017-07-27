@@ -42,21 +42,26 @@ export class ConditionComponent implements OnInit
   }
 
   ngOnInit() {
-    this.httpService.getPropertyInfo(this.Condition.PropertyId).subscribe(
-      (data: PropertyInfoModel) => {
-        this.PropertyInfo = data;
-      }
-    );
+    if (this.Condition.Id == "") {
 
-    if (this.Condition.AndConditions == null)
-      this.httpService.getAndConditions(this.Condition.Id).subscribe(
-        (data: ConditionModel[]) => {
-          this.Condition.AndConditions = data;
-          this.populateAndConditions();
+    }
+    else {
+      this.httpService.getPropertyInfo(this.Condition.PropertyId).subscribe(
+        (data: PropertyInfoModel) => {
+          this.PropertyInfo = data;
         }
       );
-    else
-      this.populateAndConditions()
+
+      if (this.Condition.AndConditions == null)
+        this.httpService.getAndConditions(this.Condition.Id).subscribe(
+          (data: ConditionModel[]) => {
+            this.Condition.AndConditions = data;
+            this.populateAndConditions();
+          }
+        );
+      else
+        this.populateAndConditions()
+    }
   }
 
   AddAndCondition() {

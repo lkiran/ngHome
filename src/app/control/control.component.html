@@ -1,12 +1,17 @@
-<div class="card m-4">
-  <h5 class="card-header">{{Control.Name}}</h5>
+<div class="card">
+  <form (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+    <input type="hidden" id="Id" formControlName="Id">
 
-  <div class="card-block">
-    <form (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+    <div class="card-header">
+      <input class="form-control header" type="text" formControlName="Name" placeholder="Kontrol İsmi Girin"/>
+    </div>
+
+    <div class="card-block">
+
       <div class="mb-3">
 
-        <div class="mb-3 bottom-guide" >
-          <span class="lead">Görevler</span>
+        <div class="mb-3 bottom-guide">
+          <span class="lead">Görevler</span><span class="badge badge-pill badge-info">{{Control.Tasks?.length}}</span>
           <a class="float-right text-info" (click)="AddNewTask()"><i class="fa fa-plus"></i> Görev Ekle</a>
         </div>
         <div formArrayName="Tasks" *ngFor="let task of Control.Tasks; let i=index">
@@ -20,8 +25,9 @@
       </div>
 
       <div class="mb-3">
-        <div class="mb-3 bottom-guide" >
-          <span class="lead">Koşullar</span>
+        <div class="mb-3 bottom-guide">
+          <span class="lead">Koşullar</span><span
+          class="badge badge-pill badge-info">{{Control.Conditions?.length}}</span>
           <a class="float-right text-info" (click)="AddNewCondition()"><i class="fa fa-plus"></i> Koşul Ekle</a>
         </div>
 
@@ -32,12 +38,17 @@
             [condition]="condition">
           </control-condition>
         </div>
+
       </div>
 
       <button type="submit" class="btn btn-info">Kaydet</button>
-    </form>
-  </div>
+      <button class="btn btn-outline-danger" (click)="CancelNewControl()" *ngIf="Control.Id==''">İptal</button>
 
-  <div class="card-footer">{{controlForm.value | json}}</div>
+    </div>
+
+    <div class="card-footer">{{controlForm.value | json}}</div>
+
+  </form>
+
 </div>
 

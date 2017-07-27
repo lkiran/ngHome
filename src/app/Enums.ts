@@ -12,8 +12,11 @@ export module Enums
 
   export enum ClassEnum
   {
-    Integer,
-    String
+    Error = 0,
+    Integer = 1,
+    String = 2,
+    Boolean = 3,
+    Color = 4
   }
 
   export enum TypeEnum {

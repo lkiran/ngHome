@@ -1,6 +1,10 @@
 <button class="btn btn-default" style="margin-bottom: 16px" (click)="Open(content)">
   <span *ngIf="Prop.Id==''; else:elseBlock">Özellik Seç</span>
-  <ng-template #elseBlock>{{Prop.DeviceName}} > {{Prop.FunctionName}} > {{Prop.Name}}</ng-template>
+  <ng-template #elseBlock>
+    {{Prop.DeviceName}} <i class="fa fa-chevron-right ml-1 mr-1"></i>
+    {{Prop.FunctionName}} <i class="fa fa-chevron-right ml-1 mr-1"></i>
+    {{Prop.Name}}
+  </ng-template>
 </button>
 
 <ng-template #content let-c="close" let-d="dismiss">

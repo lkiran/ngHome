@@ -3,42 +3,45 @@
   <input type="hidden" formControlName="Id">
 
   <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"></property-selector>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <select class="form-control" formControlName="Operator">
+          <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
+          <option [value]="comparerEnum.Equal">Eşit (=)
+          </option>
+          <option [value]="comparerEnum.NotEqual">
+            Eşit değil (≠)
+          </option>
 
-  <div class="form-group">
-    <select class="form-control" formControlName="Operator">
-      <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
-      <option [value]="comparerEnum.Equal">Eşit (=)
-      </option>
-      <option [value]="comparerEnum.NotEqual">
-        Eşit değil (≠)
-      </option>
+          <option [value]="comparerEnum.Greather">
+            Büyük (>)
+          </option>
 
-      <option [value]="comparerEnum.Greather">
-        Büyük (>)
-      </option>
+          <option [value]="comparerEnum.EqualOrSmaller">
+            Eşit veya büyük (≥)
+          </option>
 
-      <option [value]="comparerEnum.EqualOrSmaller">
-        Eşit veya büyük (≥)
-      </option>
+          <option [value]="comparerEnum.Smaller">
+            Küçük (<)
+          </option>
 
-      <option [value]="comparerEnum.Smaller">
-        Küçük (<)
-      </option>
+          <option [value]="comparerEnum.EqualOrGreather">
+            Eşit veya küçük (≤)
+          </option>
 
-      <option [value]="comparerEnum.EqualOrGreather">
-        Eşit veya küçük (≤)
-      </option>
+        </select>
 
-    </select>
-
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input class="form-control" type="text" formControlName="Value" placeholder="Değer Giriniz"/>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <input class="form-control" type="text" formControlName="Value" placeholder="Değer Giriniz"/>
-  </div>
-
   <div *ngIf="Condition.AndConditions.length > 0; elseTemplate">
-    <span>Bağlı Koşullar</span>
+    <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition.AndConditions?.length}}</span>
     <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
 
     <div class="pl-3 pt-2 left-guide">
