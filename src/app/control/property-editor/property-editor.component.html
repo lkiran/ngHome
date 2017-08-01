@@ -1,3 +1,4 @@
+<div class="col-sm-6" [ngSwitch]="Prop.Class">
 
   <input *ngSwitchCase="classEnum.String" class="form-control" type="text"
          [value]="Value"
@@ -12,4 +13,5 @@
   <span *ngSwitchCase="classEnum.Color">Color</span>
   <span *ngSwitchCase="classEnum.Integer">Int</span>
   <span *ngSwitchDefault>...</span>
+  <span>{{Prop.Class}}</span>
 </div>

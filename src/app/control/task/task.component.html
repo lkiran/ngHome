@@ -3,6 +3,7 @@
   <input type="hidden" formControlName="Id">
   <div class="row">
     <div class="col-md-6">
+      <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"></property-selector>
     </div>
     <div class="col-md-6">
       <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
