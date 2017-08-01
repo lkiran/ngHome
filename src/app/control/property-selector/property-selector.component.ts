@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, forwardRef} from '@angular/core';
+import {Component, OnInit, Input, forwardRef, Output} from '@angular/core';
 import {HttpService} from "../../../Services/http.service";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {DeviceModel} from "../../../Models/DeviceModel";
@@ -6,6 +6,7 @@ import {FunctionModel} from "../../../Models/FunctionModel";
 import {PropertyModel} from "../../../Models/PropertyModel";
 import {NgbModal, NgbModalRef, NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
+import {Observable} from "rxjs";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -25,13 +26,11 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   Devices: DeviceModel[] = [];
   Device: DeviceModel = null;
   Function: FunctionModel = null;
-  onChange: any = () => {
-  };
   @Input("property") public Prop: PropertyInfoModel;
 
-  constructor(private modalService: NgbModal, private httpService: HttpService) {
-  }
+  constructor(private modalService: NgbModal, private httpService: HttpService) { }
 
+  onChange: any = () => { };
   writeValue(PropertyId: string): void { }
 
   registerOnChange(fn: any): void {
@@ -85,7 +84,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   populateProperties(functionId: string) {
     this.Function = this.Device.Functions.filter(f => f.Id === functionId)[0];
 
-    if (this.Function==null || this.Function.Properties != null)
+    if (this.Function == null || this.Function.Properties != null)
       return;
 
     this.httpService.getProperties(functionId)

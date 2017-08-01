@@ -5,11 +5,12 @@ import {AppComponent} from './app.component';
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {TaskComponent} from "./control/task/task.component";
 import {ControlComponent} from './control/control.component';
-import {PropertyEditorComponent} from "./control/property-editor/property-editor.component";
+import {PropertyEditorControl} from "./control/property-editor/property-editor.component";
 import {PropertySelectorControl} from './control/property-selector/property-selector.component';
 import {ConditionComponent} from './control/condition/condition.component';
 import {HttpService} from "../Services/http.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { UiSwitchModule } from 'angular2-ui-switch';
 
 @NgModule(
   {
@@ -17,17 +18,18 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
       AppComponent,
       PropertySelectorControl,
-      PropertyEditorComponent,
+      PropertyEditorControl,
       ControlComponent,
       TaskComponent,
       ConditionComponent
     ],
     imports: [
+      UiSwitchModule,
       BrowserModule,
       FormsModule,
       HttpModule,
       ReactiveFormsModule,
-      NgbModule.forRoot()
+      NgbModule.forRoot(),
     ],
 
     providers: [HttpService],

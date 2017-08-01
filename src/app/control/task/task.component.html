@@ -1,11 +1,11 @@
 <div class="form-group" [formGroup]="taskGroup">
 
   <input type="hidden" formControlName="Id">
-
-  <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"></property-selector>
   <div class="row">
-    <div class="col-sm-6">
-      <input class="form-control" type="text" id="{{Task.Id}}" formControlName="Value">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+      <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
     </div>
   </div>
 </div>

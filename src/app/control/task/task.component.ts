@@ -1,10 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormArray, FormGroup, FormBuilder} from "@angular/forms";
-import {FormInitializer} from "../../Initializers";
 import {TaskModel} from "../../../Models/TaskModel";
 import {HttpService} from "../../../Services/http.service";
-import {PropertyModel} from "../../../Models/PropertyModel";
-import {Task} from "protractor/built/taskScheduler";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
 
 @Component(

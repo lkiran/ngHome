@@ -1,15 +1,15 @@
-<div [formGroup]="propertyEditorGroup">
 
-  <div class="col-lg-3">
+  <input *ngSwitchCase="classEnum.String" class="form-control" type="text"
+         [value]="Value"
+         (change)="onChange($event)"
+         (keyup)="onChange($event)">
 
-    <div class="form-group">
+  <ui-switch *ngSwitchCase="classEnum.Boolean"
+             [ngModel]="Value"
+             (change)="onChange($event)">
+  </ui-switch>
 
-      <label for="{{Property.Id}}">{{Property.Name}}</label>
-
-      <input type="hidden" id="Id" value="{{Property.Id}}" formControlName="Id">
-
-      <input class="form-control" type="text" value="{{Property.Value}}" id="{{Property.Id}}" formControlName="Value">
-
-    </div>
-  </div>
+  <span *ngSwitchCase="classEnum.Color">Color</span>
+  <span *ngSwitchCase="classEnum.Integer">Int</span>
+  <span *ngSwitchDefault>...</span>
 </div>

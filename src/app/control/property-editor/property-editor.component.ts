@@ -1,26 +1,41 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {HttpService} from "../../../Services/http.service";
-import {FormGroup, FormBuilder, FormControl} from "@angular/forms";
-import {DeviceModel} from "../../../Models/DeviceModel";
-import {FunctionModel} from "../../../Models/FunctionModel";
-import {PropertyModel} from "../../../Models/PropertyModel";
+import {Component, OnInit, Input, forwardRef, OnChanges} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
+import {Enums} from "../../Enums";
+
+
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => PropertyEditorControl),
+  multi: true
+};
 
 @Component(
   {
     selector: 'property-editor',
     templateUrl: 'property-editor.component.html',
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
-export class PropertyEditorComponent implements OnInit {
-  Device: DeviceModel = null;
-  Function: FunctionModel = null;
-  public propertyEditorGroup: FormGroup;
-  @Input('property') public Property: PropertyModel;
+export class PropertyEditorControl implements OnInit,ControlValueAccessor {
 
-  constructor(private httpService: HttpService, private _fb: FormBuilder) {
-  }
+  public Value: string;
+  @Input("property") public Prop: PropertyInfoModel;
+  public classEnum = Enums.ClassEnum;
 
-  ngOnInit() {
+  constructor() { }
 
-  }
+  propagateChange = (_: any) => { };
+
+  onChange: any = (event) => {
+    this.propagateChange(event);
+  };
+
+  writeValue(Value: string): void { this.Value = Value}
+
+  registerOnChange(fn: any): void { this.propagateChange = fn; }
+
+  registerOnTouched(fn: any): void { }
+
+  ngOnInit() { }
 }
