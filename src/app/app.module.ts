@@ -10,6 +10,7 @@ import {PropertySelectorControl} from './control/property-selector/property-sele
 import {ConditionComponent} from './control/condition/condition.component';
 import {HttpService} from "../Services/http.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ColorPickerModule} from "ngx-color-picker";
 import {UiSwitchModule} from "angular2-ui-switch";
 
 @NgModule(
@@ -24,6 +25,7 @@ import {UiSwitchModule} from "angular2-ui-switch";
       ConditionComponent
     ],
     imports: [
+      ColorPickerModule,
       UiSwitchModule,
       BrowserModule,
       FormsModule,

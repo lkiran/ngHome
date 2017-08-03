@@ -1,1 +1,3 @@
+npm install rxjs --save
 npm install angular2-ui-switch --save
+npm install ngx-color-picker --save-dev   ->    https://github.com/zefoy/ngx-color-picker

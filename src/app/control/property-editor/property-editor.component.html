@@ -10,7 +10,10 @@
              (change)="onChange($event)">
   </ui-switch>
 
-  <span *ngSwitchCase="classEnum.Color">Color</span>
+  <input *ngSwitchCase="classEnum.Color" [(colorPicker)]="Value" [cpOKButton]="true" [style.background]="Value"
+         [value]="Value"
+         (colorPickerSelect)="onColorChange($event)">
+
 
   <input *ngSwitchCase="classEnum.Integer" class="form-control" type="number"
          [value]="Value"
