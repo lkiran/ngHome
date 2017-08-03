@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, forwardRef, Output} from '@angular/core';
+import {Component, OnInit, Input, forwardRef, Output, EventEmitter} from '@angular/core';
 import {HttpService} from "../../../Services/http.service";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {DeviceModel} from "../../../Models/DeviceModel";
@@ -27,6 +27,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   Device: DeviceModel = null;
   Function: FunctionModel = null;
   @Input("property") public Prop: PropertyInfoModel;
+  @Output() changeEvent: EventEmitter<PropertyInfoModel> = new EventEmitter();
 
   constructor(private modalService: NgbModal, private httpService: HttpService) { }
 
@@ -49,6 +50,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
             (data: PropertyInfoModel) => {
               this.Prop = data;
               this.onChange(data.Id);
+              this.changeEvent.emit(data);
             }
           );
       },

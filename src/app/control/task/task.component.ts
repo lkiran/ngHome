@@ -1,13 +1,15 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {FormArray, FormGroup, FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder} from "@angular/forms";
 import {TaskModel} from "../../../Models/TaskModel";
 import {HttpService} from "../../../Services/http.service";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
+import {PropertySelectorControl} from "../property-selector/property-selector.component";
 
 @Component(
   {
     selector: 'control-task',
-    templateUrl: 'task.component.html'
+    templateUrl: 'task.component.html',
+    providers: [PropertySelectorControl]
   }
 )
 export class TaskComponent implements OnInit {
@@ -16,7 +18,9 @@ export class TaskComponent implements OnInit {
   @Input('taskGroup') public taskGroup: FormGroup;
   public PropertyInfo: PropertyInfoModel = new PropertyInfoModel;
 
-  constructor(private httpService: HttpService, private _fb: FormBuilder) {
+  constructor(
+    private httpService: HttpService, private selector: PropertySelectorControl
+  ) {
     if (this.PropertyInfo == null)
       this.PropertyInfo = new PropertyInfoModel();
   }
@@ -29,5 +33,9 @@ export class TaskComponent implements OnInit {
         this.PropertyInfo = data;
       }
     );
+  }
+
+  PropChanged(PropInfo: PropertyInfoModel) {
+    this.PropertyInfo = PropInfo;
   }
 }

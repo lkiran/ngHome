@@ -11,7 +11,12 @@
   </ui-switch>
 
   <span *ngSwitchCase="classEnum.Color">Color</span>
-  <span *ngSwitchCase="classEnum.Integer">Int</span>
+
+  <input *ngSwitchCase="classEnum.Integer" class="form-control" type="number"
+         [value]="Value"
+         (change)="onChange($event)"
+         (keyup)="onChange($event)">
+
   <span *ngSwitchDefault>...</span>
   <span>{{Prop.Class}}</span>
 </div>
