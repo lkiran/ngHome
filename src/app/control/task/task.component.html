@@ -2,10 +2,13 @@
 
   <input type="hidden" formControlName="Id">
   <div class="row">
-    <div class="col-md-6">
-      <property-selector class="form-group" [property]="PropertyInfo" (changeEvent)="PropChanged($event)"  formControlName="PropertyId"></property-selector>
+    <div class="col-md-12">
+      <property-selector class="form-group" [property]="PropertyInfo" (changeEvent)="PropChanged($event)"
+                         formControlName="PropertyId"></property-selector>
     </div>
-    <div class="col-md-6">
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
     </div>
   </div>

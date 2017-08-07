@@ -1,4 +1,4 @@
-<div class="col-sm-6" [ngSwitch]="Prop.Class">
+<div [ngSwitch]="Prop.Class">
 
   <input *ngSwitchCase="classEnum.String" class="form-control" type="text"
          [value]="Value"
@@ -10,7 +10,8 @@
              (change)="onChange($event)">
   </ui-switch>
 
-  <input *ngSwitchCase="classEnum.Color" [(colorPicker)]="Value" [cpOKButton]="true" [style.background]="Value"
+  <input *ngSwitchCase="classEnum.Color" class="form-control" [(colorPicker)]="Value" [cpOKButton]="true"
+         [style.background]="Value" [cpOutputFormat]="'rgba'" style="width: auto;"
          [value]="Value"
          (colorPickerSelect)="onColorChange($event)">
 
@@ -20,6 +21,30 @@
          (change)="onChange($event)"
          (keyup)="onChange($event)">
 
+  <div class="weekDays-selector" *ngSwitchCase="classEnum.DayOfWeeks">
+    <input type="checkbox" id="weekday-mon" class="weekday"/>
+    <label for="weekday-mon">Pa</label>
+    <input type="checkbox" id="weekday-tue" class="weekday"/>
+    <label for="weekday-tue">Sa</label>
+    <input type="checkbox" id="weekday-wed" class="weekday"/>
+    <label for="weekday-wed">Ça</label>
+    <input type="checkbox" id="weekday-thu" class="weekday"/>
+    <label for="weekday-thu">Pe</label>
+    <input type="checkbox" id="weekday-fri" class="weekday"/>
+    <label for="weekday-fri">Cu</label>
+    <input type="checkbox" id="weekday-sat" class="weekday"/>
+    <label for="weekday-sat">Ct</label>
+    <input type="checkbox" id="weekday-sun" class="weekday"/>
+    <label for="weekday-sun">Pz</label>
+  </div>
+
+  <div class="input-group" *ngSwitchCase="classEnum.Date">
+    <input class="form-control" placeholder="yyyy-mm-dd"
+           name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+    <button class="input-group-addon" (click)="d.toggle()" type="button">
+      <i class="fa fa-calendar"></i>
+    </button>
+  </div>
+
   <span *ngSwitchDefault>...</span>
-  <span>{{Prop.Class}}</span>
 </div>

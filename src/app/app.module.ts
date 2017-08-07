@@ -13,6 +13,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ColorPickerModule} from "ngx-color-picker";
 import {UiSwitchModule} from "angular2-ui-switch";
 
+
+
 @NgModule(
   {
     declarations: [
