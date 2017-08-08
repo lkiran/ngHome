@@ -22,8 +22,9 @@ export module Enums
   }
 
   export enum TypeEnum {
-    ReadOnly,
-    WriteOnly,
-    ReadOrWrite
+    Error = 0,
+    ReadOnly = 1,
+    WriteOnly = 2,
+    ReadOrWrite = 3
   }
 }

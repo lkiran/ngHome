@@ -5,6 +5,7 @@ export class PropertyModel {
     public Value: string = "",
     public Type: number = 0,
     public Class: number = 0,
+    public Comparable: boolean = false,
   ) {
   }
 }

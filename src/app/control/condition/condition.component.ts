@@ -78,4 +78,8 @@ export class ConditionComponent implements OnInit
     );
     this.Condition.AndConditions.push(new ConditionModel);
   }
+
+  PropChanged(PropInfo: PropertyInfoModel) {
+    this.PropertyInfo = PropInfo;
+  }
 }

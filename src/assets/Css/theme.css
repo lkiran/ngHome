@@ -33,10 +33,12 @@ button, a, .form-control:hover {
 .btn-default, .btn-secondary {
   border-bottom-color: rgb(190, 190, 190) !important;
 }
+
 .btn-default:hover, .btn-secondary:hover {
   background: rgb(190, 190, 190) !important;
   border-bottom-color: rgb(190, 190, 190) !important;
 }
+
 .btn-info, .btn-outline-info {
   border-bottom-color: #31b0d5 !important;
 }
@@ -64,6 +66,7 @@ input.form-control, select.form-control {
   border-right: none !important;
   border-radius: 0 !important;
   padding: 12px 8px 0 8px !important;
+  margin-bottom: 3px !important;
 }
 
 .left-guide {
@@ -77,4 +80,15 @@ input.form-control, select.form-control {
 .badge {
   margin-left: 5px;
   vertical-align: super;
+}
+
+@media (max-width: 978px) {
+  .container {
+    padding: 5px;
+    margin: 0;
+  }
+
+  div.card-block {
+    padding: 10px;
+  }
 }

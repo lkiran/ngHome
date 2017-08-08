@@ -1,45 +1,49 @@
 <div class="mb-2" [formGroup]="conditionGroup">
 
   <input type="hidden" formControlName="Id">
-
-  <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"></property-selector>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <select class="form-control" formControlName="Operator">
-          <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
-          <option [value]="comparerEnum.Equal">Eşit (=)
-          </option>
-          <option [value]="comparerEnum.NotEqual">
-            Eşit değil (≠)
-          </option>
-
-          <option [value]="comparerEnum.Greather">
-            Büyük (>)
-          </option>
-
-          <option [value]="comparerEnum.EqualOrSmaller">
-            Eşit veya büyük (≥)
-          </option>
-
-          <option [value]="comparerEnum.Smaller">
-            Küçük (<)
-          </option>
-
-          <option [value]="comparerEnum.EqualOrGreather">
-            Eşit veya küçük (≤)
-          </option>
-
-        </select>
-
-      </div>
+    <div class="col-md-12">
+      <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"
+                         (changeEvent)="PropChanged($event)"></property-selector>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <input class="form-control" type="text" formControlName="Value" placeholder="Değer Giriniz"/>
-      </div>
+    <div class="col-sm-6" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
+
+      <select class="form-control" formControlName="Operator">
+        <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
+        <option [value]="comparerEnum.Equal">Eşit (=)
+        </option>
+        <option [value]="comparerEnum.NotEqual">
+          Eşit değil (≠)
+        </option>
+
+        <option [value]="comparerEnum.Greather">
+          Büyük (>)
+        </option>
+
+        <option [value]="comparerEnum.EqualOrSmaller">
+          Eşit veya büyük (≥)
+        </option>
+
+        <option [value]="comparerEnum.Smaller">
+          Küçük (<)
+        </option>
+
+        <option [value]="comparerEnum.EqualOrGreather">
+          Eşit veya küçük (≤)
+        </option>
+      </select>
+    </div>
+    <ng-template #uncomparable>
+      <input type="hidden" formControlName="Operator" [value]="comparerEnum.Equal">
+    </ng-template>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
     </div>
   </div>
+
   <div *ngIf="Condition.AndConditions.length > 0; elseTemplate">
     <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition.AndConditions?.length}}</span>
     <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
