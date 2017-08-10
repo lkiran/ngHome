@@ -7,6 +7,8 @@ import {PropertyModel} from "../../../Models/PropertyModel";
 import {NgbModal, NgbModalRef, NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
 import {Observable} from "rxjs";
+import TypeEnum = Enums.TypeEnum;
+import {Enums} from "../../Enums";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -26,12 +28,16 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   Devices: DeviceModel[] = [];
   Device: DeviceModel = null;
   Function: FunctionModel = null;
+
+
   @Input("property") public Prop: PropertyInfoModel;
+  @Input("type") public Type: Enums.TypeEnum;
   @Output() changeEvent: EventEmitter<PropertyInfoModel> = new EventEmitter();
 
   constructor(private modalService: NgbModal, private httpService: HttpService) { }
 
   onChange: any = () => { };
+
   writeValue(PropertyId: string): void { }
 
   registerOnChange(fn: any): void {
@@ -89,7 +95,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
     if (this.Function == null || this.Function.Properties != null)
       return;
 
-    this.httpService.getProperties(functionId)
+    this.httpService.getProperties(functionId, this.Type)
       .subscribe(
         (data: PropertyModel[]) => {
           this.Function.Properties = data;

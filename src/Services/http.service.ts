@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import "rxjs/Rx";
+import TypeEnum = Enums.TypeEnum;
+import {Enums} from "../app/Enums";
 
 @Injectable()
 export class HttpService
@@ -40,8 +42,8 @@ export class HttpService
       .map((response: Response) => response.json());
   }
 
-  getProperties(functionId: string) {
-    return this.http.get(this._baseUrl + "Properties/FunctionProperties?functionId=" + functionId)
+  getProperties(functionId: string, type: Enums.TypeEnum) {
+    return this.http.get(this._baseUrl + "Properties/FunctionProperties?functionId=" + functionId + "&type=" + type)
       .map((response: Response) => response.json());
   }
 

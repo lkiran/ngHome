@@ -24,8 +24,8 @@
   <dow-picker *ngSwitchCase="classEnum.DayOfWeeks" [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
 
   <div class="input-group" *ngSwitchCase="classEnum.Date">
-    <input class="form-control" placeholder="yyyy-mm-dd"
-           name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+    <input class="form-control col-md-3" placeholder="GG.AA.YYYY"
+           name="dp" [(ngModel)]="Value" ngbDatepicker #d="ngbDatepicker" (navigate)="onChange($event)">
     <button class="input-group-addon" (click)="d.toggle()" type="button">
       <i class="fa fa-calendar"></i>
     </button>

@@ -16,6 +16,7 @@
   cursor: pointer;
   color: #31b0d5;
   font-weight: 600 !important;
+  transition: all 0.2s ease-in-out
 }
 
 .weekDays-selector input[type=checkbox]:checked + label {
@@ -26,4 +27,5 @@
 .weekDays-selector input[type=checkbox]:hover + label {
   background: #31b0d5;
   color: #ffffff;
+  transition: all 0.2s ease-in-out
 }

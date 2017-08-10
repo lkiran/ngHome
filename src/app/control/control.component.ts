@@ -30,8 +30,6 @@ export class ControlComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Control", this.Control);
-
     this.controlForm = this._fb.group(
       {
         Id: this.Control.Id,
@@ -94,6 +92,11 @@ export class ControlComponent implements OnInit {
     this.Control.Tasks.push(new TaskModel);
   }
 
+  RemoveTask(index:number){
+    this.TaskArray.removeAt(index);
+    this.Control.Tasks.splice(index, 1);
+  }
+
   AddNewCondition() {
     this.ConditionArray.push(
       this._fb.group(
@@ -109,6 +112,11 @@ export class ControlComponent implements OnInit {
     this.Control.Conditions.push(new ConditionModel);
   }
 
+  RemoveCondition(index:number){
+    this.ConditionArray.removeAt(index);
+    this.Control.Conditions.splice(index, 1);
+  }
+
   save(form: NgForm) {
     let changedProperties = [];
 
@@ -120,7 +128,5 @@ export class ControlComponent implements OnInit {
           changedProperties.push(currentControl);
       }
     );
-
-    console.log(changedProperties);
   }
 }

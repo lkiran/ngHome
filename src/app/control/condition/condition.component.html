@@ -1,9 +1,9 @@
-<div class="mb-2" [formGroup]="conditionGroup">
+<div class="form-group left-guide pl-1 mb-1" [formGroup]="conditionGroup">
 
   <input type="hidden" formControlName="Id">
   <div class="row">
     <div class="col-md-12">
-      <property-selector class="form-group" [property]="PropertyInfo" formControlName="PropertyId"
+      <property-selector class="form-group" [property]="PropertyInfo" [type]="typeEnum.ReadOnly" formControlName="PropertyId"
                          (changeEvent)="PropChanged($event)"></property-selector>
     </div>
     <div class="col-sm-6" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
@@ -48,10 +48,11 @@
     <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition.AndConditions?.length}}</span>
     <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
 
-    <div class="pl-3 pt-2 left-guide">
+    <div class="pl-1 pt-2 ">
       <div
         formArrayName="AndConditions"
         *ngFor="let condition of Condition.AndConditions; let i=index">
+        <a class="text-danger"><i class="fa fa-times mt-3" (click)="RemoveAndCondition(i)"></i> Kaldır</a>
         <control-condition
           [formGroupName]="i"
           [conditionGroup]="AndConditionArray.controls[i]"
@@ -60,7 +61,7 @@
       </div>
     </div>
   </div>
-  <div #elseTemplate>
-    <a class="text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Bağlı Koşul Ekle</a>
-  </div>
+</div>
+<div #elseTemplate>
+  <a class="text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Bağlı Koşul Ekle</a>
 </div>

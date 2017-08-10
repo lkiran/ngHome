@@ -18,6 +18,7 @@ export class ConditionComponent implements OnInit
 
   public PropertyInfo: PropertyInfoModel = new PropertyInfoModel;
   comparerEnum = Enums.ComparerEnum;
+  typeEnum = Enums.TypeEnum;
 
   get AndConditionArray(): FormArray {
     return <FormArray> this.conditionGroup.get("AndConditions");
@@ -76,7 +77,13 @@ export class ConditionComponent implements OnInit
         }
       )
     );
+
     this.Condition.AndConditions.push(new ConditionModel);
+  }
+
+  RemoveAndCondition(index: number) {
+    this.AndConditionArray.removeAt(index);
+    this.Condition.AndConditions.splice(index, 1);
   }
 
   PropChanged(PropInfo: PropertyInfoModel) {

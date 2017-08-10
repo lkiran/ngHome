@@ -15,6 +15,7 @@
           <a class="float-right text-info" (click)="AddNewTask()"><i class="fa fa-plus"></i> Görev Ekle</a>
         </div>
         <div formArrayName="Tasks" *ngFor="let task of Control.Tasks; let i=index">
+          <a class="text-danger"><i class="fa fa-times mt-3" (click)="RemoveTask(i)"></i> Kaldır</a>
           <control-task
             [formGroupName]="i"
             [taskGroup]="TaskArray.controls[i]"
@@ -34,6 +35,7 @@
         </div>
 
         <div formArrayName="Conditions" *ngFor="let condition of Control.Conditions; let i=index">
+          <a class="text-danger"><i class="fa fa-times mt-3" (click)="RemoveCondition(i)"></i> Kaldır</a>
           <control-condition
             [formGroupName]="i"
             [conditionGroup]="ConditionArray.controls[i]"
@@ -48,7 +50,7 @@
 
     </div>
 
-    <div class="card-footer">{{controlForm.value | json}}</div>
+    <div class="card-footer text-justify">{{controlForm.value | json}}</div>
 
   </form>
 

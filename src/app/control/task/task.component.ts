@@ -4,6 +4,7 @@ import {TaskModel} from "../../../Models/TaskModel";
 import {HttpService} from "../../../Services/http.service";
 import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
 import {PropertySelectorControl} from "../property-selector/property-selector.component";
+import {Enums} from "../../Enums";
 
 @Component(
   {
@@ -14,6 +15,7 @@ import {PropertySelectorControl} from "../property-selector/property-selector.co
 )
 export class TaskComponent implements OnInit {
 
+  public typeEnum = Enums.TypeEnum;
   @Input('task') public Task: TaskModel;
   @Input('taskGroup') public taskGroup: FormGroup;
   public PropertyInfo: PropertyInfoModel = new PropertyInfoModel;

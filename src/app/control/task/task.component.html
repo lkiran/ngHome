@@ -3,12 +3,12 @@
   <input type="hidden" formControlName="Id">
   <div class="row">
     <div class="col-md-12">
-      <property-selector class="form-group" [property]="PropertyInfo" (changeEvent)="PropChanged($event)"
+      <property-selector class="form-group" [property]="PropertyInfo" [type]="typeEnum.WriteOnly" (changeEvent)="PropChanged($event)"
                          formControlName="PropertyId"></property-selector>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+        <div class="col-md-12">
       <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
     </div>
   </div>

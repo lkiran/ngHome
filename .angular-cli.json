@@ -22,8 +22,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../src/assets/Css/theme.css",
-        "../src/assets/Css/switch.css",
-        "../src/assets/Css/dowPicker.css"
+        "../src/assets/Css/switch.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

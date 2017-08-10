@@ -67,6 +67,20 @@ input.form-control, select.form-control {
   border-radius: 0 !important;
   padding: 12px 8px 0 8px !important;
   margin-bottom: 3px !important;
+  background: none;
+}
+
+.input-group-addon{
+  border: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.16) !important;
+  background: none !important;
+  margin-bottom: 3px !important;
+}
+
+.input-group-addon:focus {
+  border: none !important;
+  background: rgb(221, 221, 221) !important;
+  outline: none !important;
 }
 
 .left-guide {
