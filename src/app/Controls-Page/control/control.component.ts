@@ -1,11 +1,11 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {NgForm, FormGroup, FormBuilder, FormArray} from '@angular/forms';
-import {HttpService} from "../../Services/http.service";
-import {FormInitializer} from "../Initializers"
-import {ControlModel} from "../../Models/ControlModel";
 import InitConditionGroup = FormInitializer.InitConditionGroup;
-import {TaskModel} from "../../Models/TaskModel";
-import {ConditionModel} from "../../Models/ConditionModel";
+import {HttpService} from "../../../Services/http.service";
+import {ControlModel} from "../../../Models/ControlModel";
+import {TaskModel} from "../../../Models/TaskModel";
+import {ConditionModel} from "../../../Models/ConditionModel";
+import {FormInitializer} from "../../Initializers";
 
 @Component(
   {
@@ -16,6 +16,9 @@ import {ConditionModel} from "../../Models/ConditionModel";
 )
 export class ControlComponent implements OnInit {
   @Input() public Control: ControlModel;
+  @Input() public Index: number;
+  @Output() removeEvent: EventEmitter<number> = new EventEmitter();
+
   controlForm: FormGroup;
 
   constructor(private httpService: HttpService, private _fb: FormBuilder) {
@@ -115,6 +118,10 @@ export class ControlComponent implements OnInit {
   RemoveCondition(index:number){
     this.ConditionArray.removeAt(index);
     this.Control.Conditions.splice(index, 1);
+  }
+
+  Remove(){
+    this.removeEvent.emit(this.Index);
   }
 
   save(form: NgForm) {

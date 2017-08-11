@@ -1,4 +1,4 @@
-import {Component, OnInit, forwardRef, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, forwardRef, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -10,8 +10,8 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component(
   {
     selector: 'dow-picker',
-    templateUrl: './dow-picker.component.html',
-    styleUrls: ['./dow-picker.component.css'],
+    templateUrl: 'dow-picker.component.html',
+    styleUrls: ['dow-picker.component.css'],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )

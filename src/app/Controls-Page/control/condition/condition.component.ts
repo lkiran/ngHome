@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {Enums} from "../../Enums";
-import {ConditionModel} from "../../../Models/ConditionModel";
-import {HttpService} from "../../../Services/http.service";
-import {PropertyInfoModel} from "../../../Models/PropertyInfoModel"
+import {ConditionModel} from "../../../../Models/ConditionModel";
+import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
+import {HttpService} from "../../../../Services/http.service";
+import {Enums} from "../../../Enums";
 
 @Component(
   {
@@ -24,8 +24,7 @@ export class ConditionComponent implements OnInit
     return <FormArray> this.conditionGroup.get("AndConditions");
   }
 
-  constructor(private httpService: HttpService, private _fb: FormBuilder) {
-  }
+  constructor(private httpService: HttpService, private _fb: FormBuilder) { }
 
   populateAndConditions() {
     for (let andCondition of this.Condition.AndConditions)

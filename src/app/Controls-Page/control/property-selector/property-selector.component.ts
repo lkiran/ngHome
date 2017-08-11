@@ -1,14 +1,13 @@
 import {Component, OnInit, Input, forwardRef, Output, EventEmitter} from '@angular/core';
-import {HttpService} from "../../../Services/http.service";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {DeviceModel} from "../../../Models/DeviceModel";
-import {FunctionModel} from "../../../Models/FunctionModel";
-import {PropertyModel} from "../../../Models/PropertyModel";
-import {NgbModal, NgbModalRef, NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
-import {Observable} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import TypeEnum = Enums.TypeEnum;
-import {Enums} from "../../Enums";
+import {Enums} from "../../../Enums";
+import {DeviceModel} from "../../../../Models/DeviceModel";
+import {FunctionModel} from "../../../../Models/FunctionModel";
+import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
+import {HttpService} from "../../../../Services/http.service";
+import {PropertyModel} from "../../../../Models/PropertyModel";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

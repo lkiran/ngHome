@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ControlModel} from "../Models/ControlModel";
-import {HttpService} from "../Services/http.service";
+import {Component} from '@angular/core';
 
 @Component(
   {
@@ -9,22 +7,5 @@ import {HttpService} from "../Services/http.service";
     providers: []
   }
 )
-export class AppComponent implements OnInit {
-  Controls: ControlModel[] = [];
-
-  constructor(private httpService: HttpService) {
-  }
-
-  ngOnInit() {
-    this.httpService.getControls()
-      .subscribe(
-        (data: ControlModel[]) => {
-          this.Controls = data;
-        }
-      );
-  }
-
-  AddNewControl() {
-    this.Controls.push(new ControlModel);
-  }
+export class AppComponent {
 }

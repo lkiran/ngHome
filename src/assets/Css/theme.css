@@ -8,7 +8,6 @@ button, a, .form-control:hover {
 }
 
 .container {
-  padding: 20px;
 }
 
 .lead {
@@ -65,12 +64,12 @@ input.form-control, select.form-control {
   border-left: none !important;
   border-right: none !important;
   border-radius: 0 !important;
-  padding: 12px 8px 0 8px !important;
+  padding: 0 8px 0 8px !important;
   margin-bottom: 3px !important;
   background: none;
 }
 
-.input-group-addon{
+.input-group-addon {
   border: none !important;
   border-bottom: 2px solid rgba(0, 0, 0, 0.16) !important;
   background: none !important;
@@ -94,6 +93,39 @@ input.form-control, select.form-control {
 .badge {
   margin-left: 5px;
   vertical-align: super;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.navbar h1 small {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.navbar-toggler {
+  background: none !important;
+  margin-top: 5px;
+}
+
+.navbar-toggler:hover {
+  background: none !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5) !important;
+}
+
+.navbar-toggler:focus {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:active {
+  background: white !important;
+  color: #292b2c !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 978px) {

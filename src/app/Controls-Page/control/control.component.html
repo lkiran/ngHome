@@ -46,8 +46,7 @@
       </div>
 
       <button type="submit" class="btn btn-info">Kaydet</button>
-      <button class="btn btn-outline-danger" (click)="CancelNewControl()" *ngIf="Control.Id==''">İptal</button>
-
+      <a class="link text-danger pull-right" (click)="Remove()"> <i class="fa fa-times"></i> Kaldır</a>
     </div>
 
     <div class="card-footer text-justify">{{controlForm.value | json}}</div>

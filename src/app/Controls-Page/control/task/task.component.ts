@@ -1,10 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {FormGroup, FormBuilder} from "@angular/forms";
-import {TaskModel} from "../../../Models/TaskModel";
-import {HttpService} from "../../../Services/http.service";
-import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
+import {FormGroup} from "@angular/forms";
 import {PropertySelectorControl} from "../property-selector/property-selector.component";
-import {Enums} from "../../Enums";
+import {TaskModel} from "../../../../Models/TaskModel";
+import {HttpService} from "../../../../Services/http.service";
+import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
+import {Enums} from "../../../Enums";
 
 @Component(
   {

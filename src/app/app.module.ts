@@ -3,34 +3,39 @@ import {NgModule} from '@angular/core';
 import {HttpModule} from "@angular/http";
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
-import {TaskComponent} from "./control/task/task.component";
-import {ControlComponent} from './control/control.component';
-import {PropertyEditorControl} from "./control/property-editor/property-editor.component";
-import {PropertySelectorControl} from './control/property-selector/property-selector.component';
-import {ConditionComponent} from './control/condition/condition.component';
 import {HttpService} from "../Services/http.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ColorPickerModule} from "ngx-color-picker";
-import { DOWPickerControl } from './control/property-editor/dow-picker/dow-picker.component';
 import {UiSwitchModule} from "angular2-ui-switch";
 
+import {PropertySelectorControl} from "./Controls-Page/control/property-selector/property-selector.component";
+import {PropertyEditorControl} from "./Controls-Page/control/property-editor/property-editor.component";
+import {ControlComponent} from "./Controls-Page/control/control.component";
+import {TaskComponent} from "./Controls-Page/control/task/task.component";
+import {ConditionComponent} from "./Controls-Page/control/condition/condition.component";
+import {DOWPickerControl} from "./Controls-Page/control/property-editor/dow-picker/dow-picker.component";
+import {ControlsPage} from "./Controls-Page/controls.page";
+import {DevicesPage} from "./Devices-Page/devices.page";
+import {Routing} from "./app.routes";
 
 @NgModule(
   {
     declarations: [
-
       AppComponent,
       PropertySelectorControl,
       PropertyEditorControl,
       ControlComponent,
       TaskComponent,
       ConditionComponent,
-      DOWPickerControl
+      DOWPickerControl,
+      ControlsPage,
+      DevicesPage,
     ],
     imports: [
+      Routing,
+      BrowserModule,
       ColorPickerModule,
       UiSwitchModule,
-      BrowserModule,
       FormsModule,
       HttpModule,
       ReactiveFormsModule,

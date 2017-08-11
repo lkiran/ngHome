@@ -18,7 +18,8 @@ export module Enums
     Boolean = 3,
     Color = 4,
     DayOfWeeks = 5,
-    Date = 6
+    Date = 6,
+    Time = 7
   }
 
   export enum TypeEnum {

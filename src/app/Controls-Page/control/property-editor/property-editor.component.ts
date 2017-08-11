@@ -1,8 +1,7 @@
-import {Component, OnInit, Input, forwardRef, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, forwardRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {PropertyInfoModel} from "../../../Models/PropertyInfoModel";
-import {Enums} from "../../Enums";
-
+import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
+import {Enums} from "../../../Enums";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -31,7 +30,7 @@ export class PropertyEditorControl implements OnInit,ControlValueAccessor {
     this.propagateChange(event);
   };
 
-  onColorChange(color){
+  onColorChange(color) {
     this.propagateChange(color);
   }
 
