@@ -1,0 +1,24 @@
+<div class="card">
+  <form (ngSubmit)="Save(deviceForm)" [formGroup]="deviceForm">
+    <input type="hidden" id="Id" formControlName="Id">
+
+    <div class="card-header">
+      <input class="form-control header" type="text" formControlName="Name" placeholder="Aygıt İsmi Girin"/>
+    </div>
+
+    <div class="card-block">
+      <div formArrayName="Functions" *ngFor="let f of Device.Functions; let i=index">
+        <device-function [formGroupName]="i"
+                         [functionGroup]="FunctionArray.controls[i]"
+                         [function]="f">
+        </device-function>
+      </div>
+    </div>
+
+    <div class="card-footer text-justify">
+      <button type="submit" class="btn btn-info">Kaydet</button>
+      <a class="link text-danger pull-right"> <i class="fa fa-times"></i> Kaldır</a>
+    </div>
+  </form>
+</div>
+
