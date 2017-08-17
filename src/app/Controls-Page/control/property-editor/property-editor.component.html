@@ -1,36 +1,51 @@
-<div [ngSwitch]="Prop.Class">
+<div [ngSwitch]="Prop.Class" class="ml-1 mr-1">
 
-  <input *ngSwitchCase="classEnum.String" class="form-control" type="text"
-         [value]="Value"
-         (change)="onChange($event)"
-         (keyup)="onChange($event)">
-
-  <ui-switch *ngSwitchCase="classEnum.Boolean"
-             [ngModel]="Value"
-             (change)="onChange($event)">
-  </ui-switch>
-
-  <input *ngSwitchCase="classEnum.Color" class="form-control" [(colorPicker)]="Value" [style.background]="Value"
-         [cpOutputFormat]="'rgba'" style="width: auto;"
-         [value]="Value"
-         (colorPickerChange)="onColorChange($event)">
-
-
-  <input *ngSwitchCase="classEnum.Integer" class="form-control" type="number"
-         [value]="Value"
-         (change)="onChange($event)"
-         (keyup)="onChange($event)">
-
-  <dow-picker *ngSwitchCase="classEnum.DayOfWeeks" [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
-
-  <div class="input-group" *ngSwitchCase="classEnum.Date">
-    <input class="form-control col-md-3" placeholder="GG.AA.YYYY"
-           name="dp" [(ngModel)]="Value" ngbDatepicker #d="ngbDatepicker" (navigate)="onChange($event)">
-    <button class="input-group-addon" (click)="d.toggle()" type="button">
-      <i class="fa fa-calendar"></i>
-    </button>
+  <div class="col-md-6" *ngSwitchCase="classEnum.Boolean">
+    <small>{{Prop.Name}}</small>
+    <ui-switch
+      [ngModel]="Value"
+      (change)="onChange($event)">
+    </ui-switch>
   </div>
 
-  <ngb-timepicker  *ngSwitchCase="classEnum.Time" [(ngModel)]="Value"></ngb-timepicker>
+  <div class="col-md-2" *ngSwitchCase="classEnum.String">
+    <small>{{Prop.Name}}</small>
+    <input class="form-control" type="text"
+           [value]="Value"
+           (change)="onChange($event)"
+           (keyup)="onChange($event)">
+  </div>
 
+  <div class="col-md-12" *ngSwitchCase="classEnum.Color">
+    <small>{{Prop.Name}}</small>
+    <button class="btn" [(colorPicker)]="Value" [style.background]="Value"
+           [cpOutputFormat]="'rgba'"
+           [value]="Value" style="max-width: 150px"
+            (colorPickerChange)="onColorChange($event)">{{Value}}</button>
+  </div>
+
+  <div class="col-md-12" *ngSwitchCase="classEnum.Integer">
+    <small>{{Prop.Name}}</small>
+    <input class="form-control" type="number"
+           style="width: auto; max-width: 100px; min-width: 25px;"
+           [value]="Value"
+           (change)="onChange($event)"
+           (keyup)="onChange($event)">
+  </div>
+
+  <div class="col-md-12" *ngSwitchCase="classEnum.DayOfWeeks">
+    <small>{{Prop.Name}}</small>
+    <dow-picker [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
+  </div>
+
+  <div class="col-md-3" *ngSwitchCase="classEnum.Date">
+    <small>{{Prop.Name}}</small>
+    <input class="form-control" (click)="d.toggle()" placeholder="17 Ağu 2017" style="width:auto; max-width: 100px"
+           name="dp" [(ngModel)]="Value" ngbDatepicker #d="ngbDatepicker" (navigate)="onChange($event)">
+  </div>
+
+  <div class="col-md-4" *ngSwitchCase="classEnum.Time">
+    <small>{{Prop.Name}}</small>
+    <ngb-timepicker [(ngModel)]="Value"></ngb-timepicker>
+  </div>
 </div>

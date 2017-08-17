@@ -11,7 +11,6 @@ import {Device} from "./Devices-Page/Device-Component/device.component";
 import {ControlsPage} from "./Controls-Page/controls.page";
 import {DevicesPage} from "./Devices-Page/devices.page";
 import {Routing} from "./app.routes";
-import {UiSwitchModule} from "angular2-ui-switch";
 import {FunctionComponent} from "./Devices-Page/Device-Component/Function/device-function.component";
 import {DOWPickerControl} from "./Controls-Page/control/property-editor/dow-picker/dow-picker.component";
 import {ConditionComponent} from "./Controls-Page/control/condition/condition.component";
@@ -19,6 +18,8 @@ import {TaskComponent} from "./Controls-Page/control/task/task.component";
 import {ControlComponent} from "./Controls-Page/control/control.component";
 import {PropertyEditorControl} from "./Controls-Page/control/property-editor/property-editor.component";
 import {PropertySelectorControl} from "./Controls-Page/control/property-selector/property-selector.component";
+import {UiSwitchModule} from "angular2-ui-switch";
+
 
 @NgModule(
   {

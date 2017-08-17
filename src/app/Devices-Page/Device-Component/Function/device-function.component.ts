@@ -18,6 +18,7 @@ export class FunctionComponent implements OnInit
   constructor(private httpService: HttpService, private _fb: FormBuilder) { }
 
   ngOnInit() {
+    console.log(this.Function);
     if (this.Function.Id == "") { }
     else { }
   }

@@ -1,8 +1,14 @@
 <div class="form-group" [formGroup]="functionGroup">
   <input type="hidden" formControlName="Id">
-  <div class="row">
-    <div class="col-md-12">
-      <input type="text" class="form-control col-md-4" formControlName="Name"/>
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <small>Fonksiyon İsmi</small>
+      <input type="text" class="form-control" formControlName="Name"/>
     </div>
+    <div *ngFor="let p of Function.Properties">
+
+      <property-editor [property]="p"></property-editor>
+    </div>
+
   </div>
 </div>

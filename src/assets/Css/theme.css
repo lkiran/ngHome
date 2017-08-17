@@ -21,6 +21,7 @@ button, a, .form-control:hover {
   border-radius: 2px;
   margin-bottom: 3px !important;
   padding: 6px 8px 6px;
+  border-bottom-color: rgba(0, 0, 0, 0.20);
 }
 
 .btn-lg {
@@ -30,16 +31,13 @@ button, a, .form-control:hover {
 }
 
 .btn-default, .btn-secondary {
-  border-bottom-color: rgb(190, 190, 190) !important;
 }
 
 .btn-default:hover, .btn-secondary:hover {
   background: rgb(190, 190, 190) !important;
-  border-bottom-color: rgb(190, 190, 190) !important;
 }
 
 .btn-info, .btn-outline-info {
-  border-bottom-color: #31b0d5 !important;
 }
 
 .col-md-6 {
