@@ -1,28 +1,27 @@
 import {Component, OnInit, Input, forwardRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
-import {Enums} from "../../../Enums";
+import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => PropertyEditorControl),
+  useExisting: forwardRef(() => DatePickerControl),
   multi: true
 };
 
 @Component(
   {
-    selector: 'property-editor',
-    templateUrl: 'property-editor.component.html',
+    selector: 'date-picker',
+    templateUrl: 'date-picker.control.html',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
-export class PropertyEditorControl implements OnInit,ControlValueAccessor {
+export class DatePickerControl implements OnInit,ControlValueAccessor {
 
   public Value: string;
-  @Input("property") public Prop: PropertyInfoModel;
-  public classEnum = Enums.ClassEnum;
 
-  constructor() { }
+  model: NgbDateStruct;
+  date: {year: number, month: number};
+
 
   propagateChange = (_: any) => { };
 
@@ -30,11 +29,11 @@ export class PropertyEditorControl implements OnInit,ControlValueAccessor {
     this.propagateChange(event.target.value);
   };
 
-  onColorChange(color) {
-    this.propagateChange(color);
+  writeValue(Value: string): void {
+    let year = Value.split('.')[1];
+    let month = Value.split('.')[0];
+    this.date = {year: parseInt(year) , month: parseInt(month)};
   }
-
-  writeValue(Value: string): void { this.Value = Value}
 
   registerOnChange(fn: any): void { this.propagateChange = fn; }
 

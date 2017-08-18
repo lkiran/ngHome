@@ -5,10 +5,13 @@
       <small>Fonksiyon İsmi</small>
       <input type="text" class="form-control" formControlName="Name"/>
     </div>
-    <div *ngFor="let p of Function.Properties">
+    <div formArrayName="Properties" *ngFor="let p of Function.Properties; let i=index">
 
-      <property-editor [property]="p"></property-editor>
+      <div [formGroupName]="i">
+        <input type="hidden" id="Id" formControlName="Id">
+        <property-editor [property]="p" formControlName="Value"></property-editor>
+      </div>
     </div>
-
   </div>
 </div>
+

@@ -19,14 +19,17 @@ import {ControlComponent} from "./Controls-Page/control/control.component";
 import {PropertyEditorControl} from "./Controls-Page/control/property-editor/property-editor.component";
 import {PropertySelectorControl} from "./Controls-Page/control/property-selector/property-selector.component";
 import {UiSwitchModule} from "angular2-ui-switch";
+import {DatePickerControl} from "./Controls-Page/control/property-editor/date-picker/date-picker.control";
 
 
 @NgModule(
+
   {
     declarations: [
       AppComponent,
       PropertySelectorControl,
       PropertyEditorControl,
+      DatePickerControl,
       ControlComponent,
       TaskComponent,
       ConditionComponent,

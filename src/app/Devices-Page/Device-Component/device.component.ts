@@ -22,6 +22,10 @@ export class Device implements OnInit {
     return <FormArray> this.deviceForm.get("Functions");
   }
 
+  get PropertyArray(): FormArray {
+    return <FormArray> this.FunctionArray.get("Properties");
+  }
+
   ngOnInit() {
     this.deviceForm = this._fb.group(
       {
@@ -37,15 +41,17 @@ export class Device implements OnInit {
         (data: FunctionModel[]) => {
           this.Device.Functions = data;
 
-          for (let f of this.Device.Functions)
+          for (let f of this.Device.Functions) {
             this.FunctionArray.push(
               this._fb.group(
                 {
                   Id: f.Id,
-                  Name: f.Name
+                  Name: f.Name,
+                  Properties: this._fb.array([])
                 }
               )
             );
+          }
         }
       );
     }

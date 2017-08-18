@@ -1,6 +1,6 @@
 <div [ngSwitch]="Prop.Class" class="ml-1 mr-1">
 
-  <div class="col-md-6" *ngSwitchCase="classEnum.Boolean">
+  <div class="col-md-6 p-0" *ngSwitchCase="classEnum.Boolean">
     <small>{{Prop.Name}}</small>
     <ui-switch
       [ngModel]="Value"
@@ -29,6 +29,7 @@
     <input class="form-control" type="number"
            style="width: auto; max-width: 100px; min-width: 25px;"
            [value]="Value"
+           step="100"
            (change)="onChange($event)"
            (keyup)="onChange($event)">
   </div>

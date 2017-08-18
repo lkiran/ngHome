@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {FormGroup, FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
 import {FunctionModel} from "../../../../Models/FunctionModel";
 import {HttpService} from "../../../../Services/http.service";
 
@@ -14,12 +14,25 @@ export class FunctionComponent implements OnInit
   @Input('functionGroup') public functionGroup: FormGroup;
   @Input('function') public Function: FunctionModel;
 
-
   constructor(private httpService: HttpService, private _fb: FormBuilder) { }
 
+  get PropertyArray(): FormArray {
+    return <FormArray> this.functionGroup.get("Properties");
+  }
+
   ngOnInit() {
-    console.log(this.Function);
-    if (this.Function.Id == "") { }
-    else { }
+    console.log("functionGroup", this.functionGroup);
+
+
+    for (let property of this.Function.Properties)
+      this.PropertyArray.push(
+        this._fb.group(
+          {
+            Id: property.Id,
+            Value: property.Value,
+          }
+        )
+      );
+
   }
 }
