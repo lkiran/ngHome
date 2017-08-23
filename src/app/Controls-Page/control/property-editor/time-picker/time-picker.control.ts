@@ -1,35 +1,39 @@
-import {Component, OnInit, forwardRef, EventEmitter, Output, OnChanges, Input} from '@angular/core';
+import {Component, OnInit, forwardRef, EventEmitter, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {NgbDateStruct, NgbDateParserFormatter, NgbDatepickerConfig} from "@ng-bootstrap/ng-bootstrap";
 import {isNullOrUndefined} from "util";
+import {NgbTimeStruct} from "@ng-bootstrap/ng-bootstrap";
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => DatePickerControl),
+  useExisting: forwardRef(() => TimePickerControl),
   multi: true
 };
 
 @Component(
   {
-    selector: 'date-picker',
-    templateUrl: 'date-picker.control.html',
+    selector: 'time-picker',
+    templateUrl: 'time-picker.control.html',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
-export class DatePickerControl implements OnInit,ControlValueAccessor {
+export class TimePickerControl implements OnInit,ControlValueAccessor {
 
   public Value: string;
-  public model: NgbDateStruct;
+  model: NgbTimeStruct = {hour: 13, minute: 30, second: 0};
   @Output() changeEvent: EventEmitter<string> = new EventEmitter();
 
-  constructor(private config: NgbDatepickerConfig, private pf: NgbDateParserFormatter) {}
+  constructor() {}
 
   propagateChange = (_: any) => { };
 
   writeValue(Value: string): void {
     if (isNullOrUndefined(Value))
       return;
-    this.model = this.pf.parse(Value);
+    this.model = {
+      hour: parseInt(Value.split(':')[0]),
+      minute: parseInt(Value.split(':')[1]),
+      second: 0
+    };
     console.log(this.model);
   }
 
@@ -37,12 +41,12 @@ export class DatePickerControl implements OnInit,ControlValueAccessor {
 
   registerOnTouched(fn: any): void { }
 
-  onDateChange(event) {
+  onTimeChange(event) {
     this.model = event;
     this.changeEvent.emit(
-      this.model.year.toString() + "-" +
-      this.model.month.toString() + "-" +
-      this.model.day.toString()
+      this.model.hour.toString() + ":" +
+      this.model.minute.toString() + ":" +
+      this.model.second.toString()
     );
   }
 

@@ -18,8 +18,9 @@ import {TaskComponent} from "./Controls-Page/control/task/task.component";
 import {ControlComponent} from "./Controls-Page/control/control.component";
 import {PropertyEditorControl} from "./Controls-Page/control/property-editor/property-editor.component";
 import {PropertySelectorControl} from "./Controls-Page/control/property-selector/property-selector.component";
-import {UiSwitchModule} from "angular2-ui-switch";
 import {DatePickerControl} from "./Controls-Page/control/property-editor/date-picker/date-picker.control";
+import {TimePickerControl} from "./Controls-Page/control/property-editor/time-picker/time-picker.control";
+import {UiSwitchModule} from "angular2-ui-switch";
 
 
 @NgModule(
@@ -30,6 +31,7 @@ import {DatePickerControl} from "./Controls-Page/control/property-editor/date-pi
       PropertySelectorControl,
       PropertyEditorControl,
       DatePickerControl,
+      TimePickerControl,
       ControlComponent,
       TaskComponent,
       ConditionComponent,

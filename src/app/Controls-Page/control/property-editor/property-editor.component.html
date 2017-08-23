@@ -30,7 +30,7 @@
            style="width: auto; max-width: 100px; min-width: 25px;"
            [value]="Value"
            step="100"
-           (change)="onChange($event)"
+           (change)="onChange($event.target.value)"
            (keyup)="onChange($event)">
   </div>
 
@@ -41,12 +41,15 @@
 
   <div class="col-md-3" *ngSwitchCase="classEnum.Date">
     <small>{{Prop.Name}}</small>
-    <input class="form-control" (click)="d.toggle()" placeholder="17 Ağu 2017" style="width:auto; max-width: 100px"
-           name="dp" [(ngModel)]="Value" ngbDatepicker #d="ngbDatepicker" (navigate)="onChange($event)">
+    <date-picker [ngModel]="Value"
+                 (changeEvent)="onChange($event)">
+    </date-picker>
   </div>
 
   <div class="col-md-4" *ngSwitchCase="classEnum.Time">
     <small>{{Prop.Name}}</small>
-    <ngb-timepicker [(ngModel)]="Value"></ngb-timepicker>
+    <time-picker [ngModel]="Value"
+                 (changeEvent)="onChange($event)">
+    </time-picker>
   </div>
 </div>

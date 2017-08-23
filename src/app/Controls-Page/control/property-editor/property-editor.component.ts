@@ -27,7 +27,7 @@ export class PropertyEditorControl implements OnInit,ControlValueAccessor {
   propagateChange = (_: any) => { };
 
   onChange: any = (event) => {
-    this.propagateChange(event.target.value);
+    this.propagateChange(event);
   };
 
   onColorChange(color) {
