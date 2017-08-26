@@ -5,7 +5,7 @@ import {HttpService} from "../../../../Services/http.service";
 
 @Component(
   {
-    selector: 'device-function',
+    selector: '[device-function]',
     templateUrl: 'device-function.component.html'
   }
 )
@@ -21,9 +21,6 @@ export class FunctionComponent implements OnInit
   }
 
   ngOnInit() {
-    console.log("functionGroup", this.functionGroup);
-
-
     for (let property of this.Function.Properties)
       this.PropertyArray.push(
         this._fb.group(
@@ -33,6 +30,5 @@ export class FunctionComponent implements OnInit
           }
         )
       );
-
   }
 }
