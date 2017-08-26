@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   font-size: 0.8em;
+  background-color: whitesmoke;
 }
 
 button, a, .form-control:hover {
@@ -13,6 +14,10 @@ button, a, .form-control:hover {
 .lead {
   font-size: 1.4em;
   font-weight: 400;
+}
+
+.tile .property {
+  margin: 0 !important;
 }
 
 .btn {
@@ -124,6 +129,38 @@ input.form-control, select.form-control {
   color: #292b2c !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   box-shadow: none !important;
+}
+
+.card {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+nav a {
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  transition: all 0.2s ease-in-out
+}
+
+nav.navbar {
+  box-shadow: 0 -6px 20px 4px black !important;
+}
+
+@media (min-width: 978px) {
+  nav.navbar {
+    padding-top: 3px;
+  }
+
+  nav a.active {
+    border-bottom: 3px solid white !important;
+    transition: all 0.2s ease-in-out
+  }
+
+  h1.navbar-brand {
+    margin-bottom: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 @media (max-width: 978px) {

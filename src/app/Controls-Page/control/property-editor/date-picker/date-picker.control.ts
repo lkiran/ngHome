@@ -30,7 +30,6 @@ export class DatePickerControl implements OnInit,ControlValueAccessor {
     if (isNullOrUndefined(Value))
       return;
     this.model = this.pf.parse(Value);
-    console.log(this.model);
   }
 
   registerOnChange(fn: any): void { this.propagateChange = fn; }

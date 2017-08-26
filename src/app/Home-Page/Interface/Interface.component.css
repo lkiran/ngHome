@@ -1,0 +1,19 @@
+.tile {
+  margin: 10px;
+  padding: 10px;
+  min-height: 100px;
+
+  border-radius: 3px !important;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1) ;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35);
+  background: white;
+}
+
+.tile > .tile-header{
+  height: 25%;
+  font-weight: 600;
+}
+
+.tile > .tile-footer{
+  height: 75%;
+}

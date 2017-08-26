@@ -7,11 +7,11 @@
     </div>
 
     <div class="card-block">
-      <div formArrayName="Functions" *ngFor="let f of Device.Functions; let i=index">
-        <device-function [formGroupName]="i"
+      <div class="row" formArrayName="Functions" *ngFor="let f of Device.Functions; let i=index">
+        <div class="col-md-12" device-function [formGroupName]="i"
                          [functionGroup]="FunctionArray.controls[i]"
                          [function]="f">
-        </device-function>
+        </div>
       </div>
     </div>
 

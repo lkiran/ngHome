@@ -34,7 +34,6 @@ export class TimePickerControl implements OnInit,ControlValueAccessor {
       minute: parseInt(Value.split(':')[1]),
       second: 0
     };
-    console.log(this.model);
   }
 
   registerOnChange(fn: any): void { this.propagateChange = fn; }

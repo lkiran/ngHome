@@ -1,31 +1,33 @@
-<div [ngSwitch]="Prop.Class" class="ml-1 mr-1">
-
-  <div class="col-md-6 p-0" *ngSwitchCase="classEnum.Boolean">
-    <small>{{Prop.Name}}</small>
-    <ui-switch
+  <div class="property" *ngIf="Prop.Class == classEnum.Boolean">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
+    <ui-switch size="small"
       [ngModel]="Value"
       (change)="onChange($event)">
     </ui-switch>
   </div>
 
-  <div class="col-md-2" *ngSwitchCase="classEnum.String">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.String">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <input class="form-control" type="text"
            [value]="Value"
            (change)="onChange($event)"
            (keyup)="onChange($event)">
   </div>
 
-  <div class="col-md-12" *ngSwitchCase="classEnum.Color">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.Color">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <button class="btn" [(colorPicker)]="Value" [style.background]="Value"
            [cpOutputFormat]="'rgba'"
            [value]="Value" style="max-width: 150px"
             (colorPickerChange)="onColorChange($event)">{{Value}}</button>
   </div>
 
-  <div class="col-md-12" *ngSwitchCase="classEnum.Integer">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.Integer">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <input class="form-control" type="number"
            style="width: auto; max-width: 100px; min-width: 25px;"
            [value]="Value"
@@ -34,22 +36,24 @@
            (keyup)="onChange($event)">
   </div>
 
-  <div class="col-md-12" *ngSwitchCase="classEnum.DayOfWeeks">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.DayOfWeeks">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <dow-picker [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
   </div>
 
-  <div class="col-md-3" *ngSwitchCase="classEnum.Date">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.Date">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <date-picker [ngModel]="Value"
                  (changeEvent)="onChange($event)">
     </date-picker>
   </div>
 
-  <div class="col-md-4" *ngSwitchCase="classEnum.Time">
-    <small>{{Prop.Name}}</small>
+  <div class="property" *ngIf="Prop.Class == classEnum.Time">
+    <small *ngIf="ShowName">{{Prop.Name}}</small>
+    <br>
     <time-picker [ngModel]="Value"
                  (changeEvent)="onChange($event)">
     </time-picker>
   </div>
-</div>

@@ -17,6 +17,10 @@ export class HttpService
       .map((response: Response) => response.json());
   }
 
+  getInterfaces() {
+    return this.http.get(this._baseUrl + "Interfaces")
+      .map((response: Response) => response.json());
+  }
   getTasks(controlId) {
     return this.http.get(this._baseUrl + "Tasks/ControlTasks?controlId=" + controlId)
       .map((response: Response) => response.json());

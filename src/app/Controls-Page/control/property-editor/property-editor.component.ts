@@ -13,6 +13,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   {
     selector: 'property-editor',
     templateUrl: 'property-editor.component.html',
+    styleUrls: ["property-editor.css"],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
@@ -20,6 +21,7 @@ export class PropertyEditorControl implements OnInit,ControlValueAccessor {
 
   public Value: string;
   @Input("property") public Prop: PropertyInfoModel;
+  @Input("ShowName") public ShowName: boolean = true;
   public classEnum = Enums.ClassEnum;
 
   constructor() { }
