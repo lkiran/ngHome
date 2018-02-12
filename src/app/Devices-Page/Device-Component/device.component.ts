@@ -58,6 +58,11 @@ export class Device implements OnInit {
   }
 
   Save(form: NgForm) {
-    console.log(form);
+    console.log("posting device form");
+    this.httpService.saveDevice(this.deviceForm.value).subscribe(
+      (data) => {
+        console.log("form data is posted:" + data);
+      }
+    );
   }
 }

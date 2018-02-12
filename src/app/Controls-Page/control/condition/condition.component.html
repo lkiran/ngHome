@@ -44,8 +44,8 @@
     </div>
   </div>
 
-  <div *ngIf="Condition.AndConditions.length > 0; elseTemplate">
-    <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition.AndConditions?.length}}</span>
+  <div *ngIf="Condition?.AndConditions?.length > 0; elseTemplate">
+    <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition?.AndConditions?.length}}</span>
     <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
 
     <div class="pl-1 pt-2 ">

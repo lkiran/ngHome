@@ -20,8 +20,10 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {HttpService} from "../Services/http.service";
+import {Cache} from "../Services/cache";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ColorPickerModule} from "ngx-color-picker";
+
 import {UiSwitchModule} from "angular2-ui-switch";
 
 @NgModule(
@@ -54,9 +56,9 @@ import {UiSwitchModule} from "angular2-ui-switch";
       NgbModule.forRoot(),
     ],
 
-    providers: [HttpService],
+    providers: [HttpService, Cache],
     bootstrap: [AppComponent]
   }
 )
-export class AppModule {
-}
+
+export class AppModule { }

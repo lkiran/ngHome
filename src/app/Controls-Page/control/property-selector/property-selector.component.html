@@ -1,8 +1,10 @@
 <button class="btn btn-default" style="margin-bottom: 16px" (click)="Open(content)" xmlns="http://www.w3.org/1999/html">
   <span *ngIf="Prop.Id==''; else:elseBlock">Özellik Seç</span>
   <ng-template #elseBlock>
-    {{Prop.DeviceName}} <i class="fa fa-chevron-right ml-1 mr-1"></i>
-    {{Prop.FunctionName}} <i class="fa fa-chevron-right ml-1 mr-1"></i>
+    {{Prop.DeviceName}}
+    <i class="fa fa-chevron-right ml-1 mr-1"></i>
+    {{Prop.FunctionName}}
+    <i class="fa fa-chevron-right ml-1 mr-1"></i>
     {{Prop.Name}}
   </ng-template>
 </button>

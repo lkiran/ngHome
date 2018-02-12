@@ -125,14 +125,10 @@ export class ControlComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    let changedProperties = [];
-
-    Object.keys(form.controls).forEach(
-      (name) => {
-        let currentControl = form.controls[name];
-
-        if (currentControl.dirty)
-          changedProperties.push(currentControl);
+    console.log("save form data");
+    this.httpService.saveControl(this.controlForm.value).subscribe(
+      (data) => {
+        console.log("form data is posted:" +data);
       }
     );
   }
