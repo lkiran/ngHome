@@ -1,13 +1,13 @@
 import {Component, OnInit, Input, forwardRef, Output, EventEmitter} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import TypeEnum = Enums.TypeEnum;
-import {Enums} from "../../../Enums";
-import {DeviceModel} from "../../../../Models/DeviceModel";
-import {FunctionModel} from "../../../../Models/FunctionModel";
-import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
-import {HttpService} from "../../../../Services/http.service";
-import {PropertyModel} from "../../../../Models/PropertyModel";
+import {Enums} from '../../../Enums';
+import {DeviceModel} from '../../../../Models/DeviceModel';
+import {FunctionModel} from '../../../../Models/FunctionModel';
+import {PropertyInfoModel} from '../../../../Models/PropertyInfoModel';
+import {HttpService} from '../../../../Services/http.service';
+import {PropertyModel} from '../../../../Models/PropertyModel';
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -22,33 +22,38 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
-export class PropertySelectorControl implements OnInit,ControlValueAccessor
-{
+export class PropertySelectorControl implements OnInit, ControlValueAccessor {
   Devices: DeviceModel[] = [];
   Device: DeviceModel = null;
   Function: FunctionModel = null;
 
 
-  @Input("property") public Prop: PropertyInfoModel;
-  @Input("type") public Type: Enums.TypeEnum;
+  @Input('property') public Prop: PropertyInfoModel;
+  @Input('title') public Title = 'Özellik Seç';
+  @Input('type') public Type: Enums.TypeEnum;
   @Output() changeEvent: EventEmitter<PropertyInfoModel> = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private httpService: HttpService) { }
+  constructor(private modalService: NgbModal, private httpService: HttpService) {
+  }
 
-  onChange: any = () => { };
+  onChange: any = () => {
+  };
 
-  writeValue(PropertyId: string): void { }
+  writeValue(PropertyId: string): void {
+  }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void { }
+  registerOnTouched(fn: any): void {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   Open(content) {
-    this.modalService.open(content).result.then(
+    this.modalService.open(content, {centered: true}).result.then(
       (result) => {
         this.httpService.getPropertyInfo(this.Prop.Id)
           .subscribe(
@@ -59,7 +64,8 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
             }
           );
       },
-      (reason) => { }
+      (reason) => {
+      }
     );
     this.httpService.getDevices()
       .subscribe(
@@ -71,7 +77,7 @@ export class PropertySelectorControl implements OnInit,ControlValueAccessor
   }
 
   populateFunctions(deviceId: string) {
-    if (deviceId == null || deviceId == "")
+    if (deviceId == null || deviceId === '')
       this.Function = null;
 
     this.Device = this.Devices.filter(d => d.Id === deviceId)[0];

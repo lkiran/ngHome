@@ -1,12 +1,12 @@
 <div class="card">
-  <form (ngSubmit)="save(controlForm)" [formGroup]="controlForm">
+  <form [formGroup]="controlForm">
     <input type="hidden" id="Id" formControlName="Id">
 
     <div class="card-header">
       <input class="form-control header" type="text" formControlName="Name" placeholder="Başlıksız Kontol"/>
     </div>
 
-    <div class="card-block bottom-guide">
+    <div class="card-body bottom-guide">
 
       <div class="mb-3">
 
@@ -22,11 +22,10 @@
             [task]="task">
           </control-task>
         </div>
-
       </div>
     </div>
 
-    <div class="card-block">
+    <div class="card-body">
       <div class="mb-3">
         <div class="mb-3 bottom-guide">
           <span class="lead">Koşullar</span><span
@@ -47,7 +46,7 @@
 
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-info">Kaydet</button>
+      <button type="button" (click)="Save(controlForm)" class="btn btn-info">Kaydet</button>
       <a class="link text-danger pull-right" (click)="Remove()"> <i class="fa fa-times"></i> Kaldır</a>
     </div>
 

@@ -17,3 +17,7 @@
 .tile > .tile-footer{
   height: 75%;
 }
+
+.card-body{
+  padding: 10px;
+}

@@ -1,0 +1,7 @@
+.display{
+  margin-bottom: 5px;}
+
+.badge, .badge-pill {
+  font-weight: 500;
+  padding: 0.5em 0.7em 0.5em !important;
+}

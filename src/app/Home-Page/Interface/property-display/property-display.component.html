@@ -1,0 +1,38 @@
+<div class="display" *ngIf="Prop.Class == classEnum.Boolean">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span *ngIf="Prop.Value=='true'" class="badge badge badge-success">Açık</span>
+  <span *ngIf="Prop.Value=='false'" class="badge badge badge-dark">Kapalı</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.String">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.Color">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.Integer">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.DayOfWeeks">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.Date">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.Time">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <span>{{Prop.Value}}</span>
+</div>
+
+<div class="display" *ngIf="Prop.Class == classEnum.Empty">
+</div>

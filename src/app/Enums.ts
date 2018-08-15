@@ -1,17 +1,14 @@
-export module Enums
-{
-  export enum ComparerEnum
-  {
-    Equal,
-    NotEqual,
-    Greather,
-    EqualOrGreather,
-    Smaller,
-    EqualOrSmaller,
+export module Enums {
+  export enum ComparerEnum {
+    Equal = 0,
+    NotEqual = 1,
+    Greater = 2,
+    EqualOrGreater = 3,
+    Smaller = 4,
+    EqualOrSmaller = 5,
   }
 
-  export enum ClassEnum
-  {
+  export enum ClassEnum {
     Error = 0,
     Integer = 1,
     String = 2,
@@ -19,7 +16,8 @@ export module Enums
     Color = 4,
     DayOfWeeks = 5,
     Date = 6,
-    Time = 7
+    Time = 7,
+    Empty = 8
   }
 
   export enum TypeEnum {

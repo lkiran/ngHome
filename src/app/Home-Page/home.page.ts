@@ -6,6 +6,7 @@ import {InterfaceModel} from "../../Models/Interfaces";
   {
     selector: 'home-page',
     templateUrl: 'home.page.html',
+    styleUrls: ['home.page.css'],
     providers: []
   }
 )

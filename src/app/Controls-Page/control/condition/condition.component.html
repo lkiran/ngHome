@@ -3,10 +3,14 @@
   <input type="hidden" formControlName="Id">
   <div class="row">
     <div class="col-md-12">
-      <property-selector class="form-group" [property]="PropertyInfo" [type]="typeEnum.ReadOnly" formControlName="PropertyId"
-                         (changeEvent)="PropChanged($event)"></property-selector>
+      <property-selector class="form-group"
+                         [property]="PropertyInfo"
+                         [type]="typeEnum.ReadOnly"
+                         formControlName="PropertyId"
+                         (changeEvent)="PropChanged($event)">
+      </property-selector>
     </div>
-    <div class="col-sm-6" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
+    <div class="col" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
 
       <select class="form-control" formControlName="Operator">
         <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
@@ -16,7 +20,7 @@
           Eşit değil (≠)
         </option>
 
-        <option [value]="comparerEnum.Greather">
+        <option [value]="comparerEnum.Greater">
           Büyük (>)
         </option>
 
@@ -28,7 +32,7 @@
           Küçük (<)
         </option>
 
-        <option [value]="comparerEnum.EqualOrGreather">
+        <option [value]="comparerEnum.EqualOrGreater">
           Eşit veya küçük (≤)
         </option>
       </select>

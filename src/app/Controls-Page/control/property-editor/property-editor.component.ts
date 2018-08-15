@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
-import {Enums} from "../../../Enums";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {PropertyInfoModel} from '../../../../Models/PropertyInfoModel';
+import {Enums} from '../../../Enums';
 
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -13,15 +13,15 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   {
     selector: 'property-editor',
     templateUrl: 'property-editor.component.html',
-    styleUrls: ["property-editor.css"],
+    styleUrls: ['property-editor.css'],
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
   }
 )
-export class PropertyEditorControl implements OnInit,ControlValueAccessor {
+export class PropertyEditorControl implements OnInit, ControlValueAccessor {
 
   public Value: string;
-  @Input("property") public Prop: PropertyInfoModel;
-  @Input("ShowName") public ShowName: boolean = true;
+  @Input('property') public Prop: PropertyInfoModel;
+  @Input('ShowName') public ShowName = true;
   public classEnum = Enums.ClassEnum;
 
   constructor() { }

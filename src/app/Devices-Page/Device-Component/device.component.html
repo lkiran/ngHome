@@ -6,7 +6,7 @@
       <input class="form-control header" type="text" formControlName="Name" placeholder="Aygıt İsmi Girin"/>
     </div>
 
-    <div class="card-block">
+    <div class="card-body">
       <div class="row" formArrayName="Functions" *ngFor="let f of Device.Functions; let i=index">
         <div class="col-md-12" device-function [formGroupName]="i"
                          [functionGroup]="FunctionArray.controls[i]"

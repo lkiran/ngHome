@@ -1,13 +1,18 @@
-<button class="btn btn-default" style="margin-bottom: 16px" (click)="Open(content)" xmlns="http://www.w3.org/1999/html">
-  <span *ngIf="Prop.Id==''; else:elseBlock">Özellik Seç</span>
+<a class="" (click)="Open(content)">
+  <span class="btn btn-sm btn-primary" *ngIf="Prop.Id==''; else:elseBlock">{{Title}}</span>
   <ng-template #elseBlock>
-    {{Prop.DeviceName}}
-    <i class="fa fa-chevron-right ml-1 mr-1"></i>
-    {{Prop.FunctionName}}
-    <i class="fa fa-chevron-right ml-1 mr-1"></i>
-    {{Prop.Name}}
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">{{Prop.DeviceName}}</span>
+      </div>
+      <div class="input-group-append">
+        <span class="input-group-text ">{{Prop.FunctionName}}</span>
+        <span class="input-group-text bg-primary text-white border-primary">{{Prop.Name}}</span>
+      </div>
+    </div>
+
   </ng-template>
-</button>
+</a>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-body">

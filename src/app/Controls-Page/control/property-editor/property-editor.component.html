@@ -1,59 +1,68 @@
-  <div class="property" *ngIf="Prop.Class == classEnum.Boolean">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <ui-switch size="small"
-      [ngModel]="Value"
-      (change)="onChange($event)">
-    </ui-switch>
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.Boolean">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <ui-switch size="small"
+             [ngModel]="Value=='true'"
+             (change)="onChange($event)">
+  </ui-switch>
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.String">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <input class="form-control" type="text"
-           [value]="Value"
-           (change)="onChange($event)"
-           (keyup)="onChange($event)">
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.String">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <input class="form-control" type="text"
+         [value]="Value"
+         (change)="onChange($event)"
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.Color">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <button class="btn" [(colorPicker)]="Value" [style.background]="Value"
-           [cpOutputFormat]="'rgba'"
-           [value]="Value" style="max-width: 150px"
-            (colorPickerChange)="onColorChange($event)">{{Value}}</button>
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.Color">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <button class="btn"
+          [(colorPicker)]="Value"
+          [style.background]="Value"
+          [cpPosition]="'bottom'"
+          [cpOKButton]="true"
+          [cpOutputFormat]="'rgba'"
+          [value]="Value"
+          (colorPickerSelect)="onChange($event)">{{Value}}
+  </button>
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.Integer">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <input class="form-control" type="number"
-           style="width: auto; max-width: 100px; min-width: 25px;"
-           [value]="Value"
-           step="100"
-           (change)="onChange($event.target.value)"
-           (keyup)="onChange($event)">
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.Integer">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <input class="form-control" type="number"
+         style="width: auto; max-width: 100px; min-width: 25px;"
+         [value]="Value"
+         step="100"
+         (change)="onChange($event.target.value)"
+         (keyup)="onChange($event)">
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.DayOfWeeks">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <dow-picker [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.DayOfWeeks">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <dow-picker [ngModel]="Value" (changeEvent)="onChange($event)"></dow-picker>
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.Date">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <date-picker [ngModel]="Value"
-                 (changeEvent)="onChange($event)">
-    </date-picker>
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.Date">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <date-picker [ngModel]="Value"
+               (changeEvent)="onChange($event)">
+  </date-picker>
+</div>
 
-  <div class="property" *ngIf="Prop.Class == classEnum.Time">
-    <small *ngIf="ShowName">{{Prop.Name}}</small>
-    <br>
-    <time-picker [ngModel]="Value"
-                 (changeEvent)="onChange($event)">
-    </time-picker>
-  </div>
+<div class="property" *ngIf="Prop.Class == classEnum.Time">
+  <small *ngIf="ShowName">{{Prop.Name}}</small>
+  <br>
+  <time-picker [ngModel]="Value"
+               (changeEvent)="onChange($event)">
+  </time-picker>
+</div>
+
+<div class="property" *ngIf="Prop.Class == classEnum.Empty">
+  <button class="btn btn-light"
+          [value]="Value"
+          (click)="onChange($event)">{{Prop.Name}}</button>
+</div>

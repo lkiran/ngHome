@@ -16,38 +16,6 @@ button, a, .form-control:hover {
   font-weight: 400;
 }
 
-.tile .property {
-  margin: 0 !important;
-}
-
-.btn {
-  font-size: 1em;
-  border-bottom: 3px solid;
-  border-radius: 2px;
-  margin-bottom: 3px !important;
-  padding: 6px 8px 6px;
-  border-bottom-color: rgba(0, 0, 0, 0.20);
-}
-
-.btn-lg {
-  font-size: 1.2em !important;
-  border-radius: 2px !important;
-  padding: 10px 14px 10px !important;
-}
-
-.btn-default, .btn-secondary {
-}
-
-.btn-default:hover, .btn-secondary:hover {
-  background: rgb(190, 190, 190) !important;
-}
-
-.btn-info, .btn-outline-info {
-}
-
-.col-md-6 {
-  padding: 15px;
-}
 
 input.form-control.header {
   background: transparent !important;
@@ -57,6 +25,11 @@ input.form-control.header {
 
 input.form-control.header:focus {
   border-bottom: 2px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+.form-control:focus{
+  box-shadow:none;
+  border-bottom: 2px solid #31b0d5 !important;
 }
 
 input.form-control, select.form-control {
@@ -93,83 +66,10 @@ input.form-control, select.form-control {
   border-bottom: 1px solid rgba(0, 0, 0, 0.16)
 }
 
-.badge {
-  margin-left: 5px;
-  vertical-align: super;
-}
-
-.navbar {
-  padding-bottom: 0;
-  padding-top: 0;
-}
-
-.navbar h1 small {
-  font-size: 20px;
-  font-weight: 300;
-}
-
-.navbar-toggler {
-  background: none !important;
-  margin-top: 5px;
-}
-
-.navbar-toggler:hover {
-  background: none !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5) !important;
-}
-
-.navbar-toggler:focus {
-  background: none !important;
-  box-shadow: none !important;
-}
-
-.navbar-toggler:active {
-  background: white !important;
-  color: #292b2c !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: none !important;
-}
-
-.card {
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15) !important;
-}
-
-nav a {
-  border-bottom: 3px solid rgba(0, 0, 0, 0);
-  transition: all 0.2s ease-in-out
-}
-
-nav.navbar {
-  box-shadow: 0 -6px 20px 4px black !important;
-}
-
-@media (min-width: 978px) {
-  nav.navbar {
-    padding-top: 3px;
-  }
-
-  nav a.active {
-    border-bottom: 3px solid white !important;
-    transition: all 0.2s ease-in-out
-  }
-
-  h1.navbar-brand {
-    margin-bottom: 2px;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-}
 
 @media (max-width: 978px) {
   .container {
     padding: 5px;
     margin: 0;
-  }
-
-  div.card-block {
-    padding: 10px;
   }
 }

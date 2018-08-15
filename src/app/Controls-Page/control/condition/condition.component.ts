@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {ConditionModel} from "../../../../Models/ConditionModel";
-import {PropertyInfoModel} from "../../../../Models/PropertyInfoModel";
-import {HttpService} from "../../../../Services/http.service";
-import {Enums} from "../../../Enums";
+import {FormGroup, FormBuilder, FormArray} from '@angular/forms';
+import {ConditionModel} from '../../../../Models/ConditionModel';
+import {PropertyInfoModel} from '../../../../Models/PropertyInfoModel';
+import {HttpService} from '../../../../Services/http.service';
+import {Enums} from '../../../Enums';
 
 @Component(
   {
@@ -21,13 +21,13 @@ export class ConditionComponent implements OnInit
   typeEnum = Enums.TypeEnum;
 
   get AndConditionArray(): FormArray {
-    return <FormArray> this.conditionGroup.get("AndConditions");
+    return <FormArray> this.conditionGroup.get('AndConditions');
   }
 
   constructor(private httpService: HttpService, private _fb: FormBuilder) { }
 
   populateAndConditions() {
-    for (let andCondition of this.Condition.AndConditions)
+    for (const andCondition of this.Condition.AndConditions)
       this.AndConditionArray.push(
         this._fb.group(
           {
@@ -42,7 +42,7 @@ export class ConditionComponent implements OnInit
   }
 
   ngOnInit() {
-    if (this.Condition.Id == "") {
+    if (this.Condition.Id == '') {
 
     }
     else {
@@ -68,10 +68,10 @@ export class ConditionComponent implements OnInit
     this.AndConditionArray.push(
       this._fb.group(
         {
-          Id: "",
-          PropertyId: "",
-          Value: "",
-          Operator: "",
+          Id: '',
+          PropertyId: '',
+          Value: '',
+          Operator: 0,
           AndConditions: this._fb.array([])
         }
       )

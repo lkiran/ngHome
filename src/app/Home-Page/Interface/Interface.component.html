@@ -1,9 +1,48 @@
-<div class="tile">
-  <div class="tile-header">
-    <span>{{Interface.Name}}</span>
+<form [formGroup]="interfaceForm">
 
+  <div *ngIf="Interface.Id!=''" class="card">
+    <div class="card-header">
+      <span>{{Interface.Name}}</span>
+    </div>
+    <div class="card-body text-center">
+      <input type="hidden" formControlName="Id" [ngModel]="Interface.Id">
+
+
+      <property-display *ngIf="Monitor.Id!=Editor.Id" [property]="Monitor" [ShowName]="false"></property-display>
+
+      <property-editor [property]="Editor"
+                       [ShowName]="false"
+                       [ngModel]="Editor.Value"
+                       formControlName="Value">
+      </property-editor>
+    </div>
   </div>
-  <div class="tile-footer">
-    <property-editor [property]="Property" [ShowName]="false" [ngModel]="Property.Value"></property-editor>
+
+  <div *ngIf="Interface.Id==''" class="card">
+    <div class="card-header">
+      <input class="form-control form-control-sm col mr-1" type="text" formControlName="Name"
+             placeholder="Yeni Arayüz"/>
+      <a *ngIf="interfaceForm.valid" (click)="Save(controlForm)" class="ml-auto btn btn-sm btn-info">
+        Kaydet
+      </a>
+    </div>
+    <div class="card-body text-center">
+      <input type="hidden" formControlName="Id" [ngModel]="Interface.Id">
+
+      <property-selector class="mb-3"
+                         style="display: inline-block"
+                         formControlName="Editor"
+                         [title]=editorTitle
+                         [property]="Editor"
+                         (changeEvent)="EditorChanged($event)">
+      </property-selector>
+      <br>
+      <property-selector class="mb-0"
+                         formControlName="Monitor"
+                         [title]=monitorTitle
+                         [property]="Monitor"
+                         (changeEvent)="MonitorChanged($event)">
+      </property-selector>
+    </div>
   </div>
-</div>
+</form>
