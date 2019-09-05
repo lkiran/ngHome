@@ -5,7 +5,7 @@ import {Enums} from '../app/Enums';
 
 @Injectable()
 export class HttpService {
-  private _baseUrl = 'http://127.0.0.1:8000/';
+  private _baseUrl = 'http://10.0.0.31:8000/';
 
   constructor(private http: Http) {
   }

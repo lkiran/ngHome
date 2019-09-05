@@ -1,71 +1,71 @@
 <div class="form-group left-guide pl-1 mb-1" [formGroup]="conditionGroup">
 
-  <input type="hidden" formControlName="Id">
-  <div class="row">
-    <div class="col-md-12">
-      <property-selector class="form-group"
-                         [property]="PropertyInfo"
-                         [type]="typeEnum.ReadOnly"
-                         formControlName="PropertyId"
-                         (changeEvent)="PropChanged($event)">
-      </property-selector>
-    </div>
-    <div class="col" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
+	<input type="hidden" formControlName="Id">
+	<div class="row">
+		<div class="col-md-12">
+			<property-selector class="form-group"
+			                   [property]="PropertyInfo"
+			                   [type]="typeEnum.ReadOnly"
+			                   formControlName="PropertyId"
+			                   (changeEvent)="PropChanged($event)">
+			</property-selector>
+		</div>
+		<div class="col" *ngIf="PropertyInfo.Comparable==true; else uncomparable">
 
-      <select class="form-control" formControlName="Operator">
-        <option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
-        <option [value]="comparerEnum.Equal">Eşit (=)
-        </option>
-        <option [value]="comparerEnum.NotEqual">
-          Eşit değil (≠)
-        </option>
+			<select class="form-control" formControlName="Operator">
+				<option value="" disabled selected *ngIf="Condition.Operator==''">--- Operatör seçiniz ---</option>
+				<option [value]="comparerEnum.Equal">Eşit (=)
+				</option>
+				<option [value]="comparerEnum.NotEqual">
+					Eşit değil (≠)
+				</option>
 
-        <option [value]="comparerEnum.Greater">
-          Büyük (>)
-        </option>
+				<option [value]="comparerEnum.Greater">
+					Büyük (>)
+				</option>
 
-        <option [value]="comparerEnum.EqualOrSmaller">
-          Eşit veya büyük (≥)
-        </option>
+				<option [value]="comparerEnum.EqualOrSmaller">
+					Eşit veya büyük (≥)
+				</option>
 
-        <option [value]="comparerEnum.Smaller">
-          Küçük (<)
-        </option>
+				<option [value]="comparerEnum.Smaller">
+					Küçük (<)
+				</option>
 
-        <option [value]="comparerEnum.EqualOrGreater">
-          Eşit veya küçük (≤)
-        </option>
-      </select>
-    </div>
-    <ng-template #uncomparable>
-      <input type="hidden" formControlName="Operator" [value]="comparerEnum.Equal">
-    </ng-template>
-  </div>
+				<option [value]="comparerEnum.EqualOrGreater">
+					Eşit veya küçük (≤)
+				</option>
+			</select>
+		</div>
+		<ng-template #uncomparable>
+			<input type="hidden" formControlName="Operator" [value]="comparerEnum.Equal">
+		</ng-template>
+	</div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-sm-12">
+			<property-editor [property]="PropertyInfo" formControlName="Value"></property-editor>
+		</div>
+	</div>
 
-  <div *ngIf="Condition?.AndConditions?.length > 0; elseTemplate">
-    <span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition?.AndConditions?.length}}</span>
-    <a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
+	<div *ngIf="Condition?.AndConditions?.length > 0; elseTemplate">
+		<span>Bağlı Koşullar</span><span class="badge badge-pill badge-info">{{Condition?.AndConditions?.length}}</span>
+		<a class="float-right text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Ekle</a>
 
-    <div class="pl-1 pt-2 ">
-      <div
-        formArrayName="AndConditions"
-        *ngFor="let condition of Condition.AndConditions; let i=index">
-        <a class="text-danger"><i class="fa fa-times mt-3" (click)="RemoveAndCondition(i)"></i> Kaldır</a>
-        <control-condition
-          [formGroupName]="i"
-          [conditionGroup]="AndConditionArray.controls[i]"
-          [condition]="condition">
-        </control-condition>
-      </div>
-    </div>
-  </div>
+		<div class="pl-1 pt-2 ">
+			<div
+					formArrayName="AndConditions"
+					*ngFor="let condition of Condition.AndConditions; let i=index">
+				<a class="text-danger"><i class="fa fa-times mt-3" (click)="RemoveAndCondition(i)"></i> Kaldır</a>
+				<control-condition
+						[formGroupName]="i"
+						[conditionGroup]="AndConditionArray.controls[i]"
+						[condition]="condition">
+				</control-condition>
+			</div>
+		</div>
+	</div>
 </div>
 <div #elseTemplate>
-  <a class="text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Bağlı Koşul Ekle</a>
+	<a class="text-info" (click)="AddAndCondition()"><i class="fa fa-plus"></i> Bağlı Koşul Ekle</a>
 </div>
